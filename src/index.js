@@ -7,6 +7,7 @@ import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
 import reducer from './store/reducers/reducers';
 import authReducer from './store/reducers/auth';
 import feedReducer from './store/reducers/feed';
+import accountReducer from './store/reducers/account';
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import {BrowserRouter} from 'react-router-dom';
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
     auth:authReducer,
     feed:feedReducer,
     reducer:reducer,
-})
+    account:accountReducer,
+});
 const store = createStore(rootReducer,composeEnhancers(applyMiddleware(thunk)));
 const app = (
     <Provider store = {store}>

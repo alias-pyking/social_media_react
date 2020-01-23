@@ -1,6 +1,5 @@
 import React,{ Component} from 'react';
 import './Feed.css';
-import axios from 'axios';
 import FeedPost from '../FeedPost/FeedPost';
 import * as actionCreators from '../../store/actions/index';
 import {connect} from 'react-redux';
@@ -42,7 +41,7 @@ class Feed extends Component{
             console.log(this.props.posts);
         }
         return (
-            <div>
+            <div className='feed'>
                 {posts}
             </div>
         )

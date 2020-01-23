@@ -99,7 +99,7 @@ class FullPost extends React.Component{
     render(){
         let displayPost = <Spinner/>;
         let displayComments = <Spinner/>
-        const {token} = this.props;
+        const {token} = this.state;
         const {postLoading,commentLoading, error} = this.state;
         if(!postLoading) {
             const {post}  = this.state;

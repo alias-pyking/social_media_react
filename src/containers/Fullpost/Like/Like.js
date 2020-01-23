@@ -1,7 +1,6 @@
 import React from 'react';
 import './Like.css';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 export default class Like extends React.Component{
     state = {
         liked: this.props.liked,
@@ -54,7 +53,7 @@ export default class Like extends React.Component{
                 <button className={likeButtonClasses.join(' ')} onClick = {this.handleLikeclick}>Like</button>
             </div>
             <div className='likesSection'>
-                <p>{this.state.likes} likes {this.state.liked ? <b> You liked </b>:''} </p>
+                <p>{this.state.likes} {likeKeyword} {this.state.liked ? <b> You liked </b>:''} </p>
             </div>
             </div>
         )

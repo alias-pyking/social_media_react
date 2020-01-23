@@ -1,0 +1,41 @@
+.bottomBar{
+    width:inherit;
+    position:fixed;
+    bottom:0;
+    background: #fff;
+    border:1px solid #333;
+    z-index:1000;
+    margin-top: 100px;
+}
+.bottomBarItems{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+.bottomBarItems li{
+    list-style: none;
+}
+.active {
+
+}
+
+@media (max-width:600px){
+    .bottomBar{
+        margin:0;
+        width:100%;
+        border:none
+    }
+    .bottomBarItems{
+        justify-content: stretch;   
+    }
+}
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px)  { 
+    .bottomBar{
+        margin: 0;
+        width:100%;
+        border:none;
+    }
+}

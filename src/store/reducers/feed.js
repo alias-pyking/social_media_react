@@ -2,7 +2,7 @@ import * as actionTypes from '../actions/actionTypes';
 import {updateObject} from '../utility';
 const initialState = {
     posts:[],
-    loading:true,
+    loading:false,
     error:null
 }
 const reducer = (state = initialState, action) => {

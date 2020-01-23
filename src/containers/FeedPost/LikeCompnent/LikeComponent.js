@@ -53,10 +53,10 @@ export default class LikeComponent extends React.Component{
             <div>
             <div className='buttons'>
                 <button className={likeButtonClasses.join(' ')} onClick = {this.handleLikeclick}>Like</button>
-                {this.props.feedpost ? <Link to={'/'+this.props.id} className='postlikeButton'>Comment</Link>:''}
+                {this.props.feedpost ? <Link to={'/p/'+this.props.id} className='postlikeButton'>Comment</Link>:''}
             </div>
             <div className='likesSection'>
-                <p>{this.state.likes} likes {this.state.likes ? <b> You liked </b>:''} </p>
+                <p>{this.state.likes} {likeKeyword} {this.state.liked ? <b> You liked </b>:''} </p>
             </div>
             </div>
         )

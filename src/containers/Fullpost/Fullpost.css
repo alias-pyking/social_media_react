@@ -3,9 +3,8 @@
     flex-direction: row;
     padding:16px;
     width:inherit;
-    box-shadow: 0   4px 8px 0 rgba(0,0,0,0.2);
     margin-top:16px;
-    margin-bottom: 16px;
+    margin-bottom: 100px;
 }
 .commentHead{
     top: 0;
@@ -13,23 +12,25 @@
 .commentSection{
     float: right;
     margin:10px;
-    z-index: 1; 
+    z-index: 1000; 
 }
 .post{
-    width:65%;
+    height: 80vh;
+    width:80vh;
 }
 .commentsList{
     width: inherit;
-    height:600px;
+    height: 70vh;
     scroll-behavior: smooth;
     overflow-y:auto;   
 }
 .addComment{
     width: inherit;
+    margin-bottom: 100px;
 }
 .addCommentTextArea{
     padding:16px;
-    width: 350px;
+    width: inherit;
     height:60px;
     border-top: none;
     border-left:none;
@@ -70,14 +71,18 @@
     .fullPost{
         display:flex;
         flex-direction: column;
-        padding:16px;
+        padding:10px;
         width: 90%;
+        height:fit-content;
         overflow-x: hidden;
-        box-shadow: 0   4px 8px 0 rgba(0,0,0,0.2);
         align-self: center;
     }
     .post{
+        height: 100%;
         width: 100%;
+    }
+    .commentsList{
+        height: 600px;
     }
     .addCommentTextArea{
         padding:16px;
