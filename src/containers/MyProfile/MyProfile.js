@@ -18,6 +18,7 @@ class MyProfile extends Component{
             const {profile} = this.props;
             displayProfile = <Profile
                         username = {profile.username}
+                        user_id = {profile.user_id}
                         profileImg = {profile.profileImage}
                         followers = {profile.followers}
                         following = {profile.following}

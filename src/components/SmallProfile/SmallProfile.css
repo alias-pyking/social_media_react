@@ -6,10 +6,15 @@
 }
 .smallProfileName{
     font-weight: bold;
-    padding-top: 8px;
-
+    margin-top:0;
+    padding-top: 0;
 }
 .smallProfile{
     display: flex;
     flex-direction: row;
+    width:200px;
+}
+.smallProfile a{
+    text-decoration: none;
+    color:black;
 }

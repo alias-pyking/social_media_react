@@ -7,7 +7,6 @@
     box-sizing: border-box;
     border-radius:5px;
     transition:0.3s;
-    cursor:pointer;
 }
 .lowerSection{
     display: flex;

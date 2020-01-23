@@ -7,7 +7,7 @@ const feedpost = (props) => {
     return (
         
         <article className="feedpost">
-            <Header authorImg = {props.authorProfileImage} username = {props.username}/>
+            <Header user_id = {props.user_id} authorImg = {props.authorProfileImage} username = {props.username}/>
             <div className='lowerSection'>
                 <img src={props.image} className='postImg' alt={props.caption}/>
                 <LikeCompnent

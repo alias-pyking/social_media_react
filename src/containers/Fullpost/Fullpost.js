@@ -105,7 +105,7 @@ class FullPost extends React.Component{
             const {post}  = this.state;
             displayPost = (
                 <div className='post'>
-                    <Header authorImg = {post.userProfileImage} username = {post.userName} />
+                    <Header user_id = {post.user_id} authorImg = {post.userProfileImage} username = {post.userName} />
                     <div className='lowerSection'>
                         <img src={post.image} className='postImg' alt={post.caption}/>
                         <Like
@@ -128,6 +128,7 @@ class FullPost extends React.Component{
                     key={index}
                     profileImg={comment.urlToProfileImage}
                     username = {comment.userName}
+                    user_id = {comment.user_id}
                     comment = {comment.text}
                     />
                 )
