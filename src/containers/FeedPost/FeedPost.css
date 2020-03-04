@@ -1,0 +1,36 @@
+.post{
+    width: 65%;
+    bottom:0;
+    left:0;
+    margin:16px;
+    box-shadow: 0   4px 8px 0 rgba(0,0,0,0.2);
+    box-sizing: border-box;
+    border-radius:5px;
+    transition:0.3s;
+    cursor:pointer;
+}
+.lowerSection{
+    display: flex;
+    flex-direction: column;
+}
+.postImg{
+    width: inherit;
+    max-height: 600px;
+}
+.footer{
+    padding: 16px;
+}
+@media (max-width:600px){
+    .post{
+        width:inherit;
+        margin:5px;
+    }
+}
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px)  { 
+    .post{
+        width: inherit;
+        margin:5px
+    }
+}
