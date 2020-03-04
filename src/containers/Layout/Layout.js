@@ -1,10 +1,11 @@
 import React,{ Component} from 'react';
 import './Layout.css';
 import Feed from '../Feed/Feed';
+import Auth from '../Auth/Auth';
 const layout = (props) => {
     return (
         <div className='container'>
-        <Feed/>
+            {props.children}
         </div>
     )
 }
