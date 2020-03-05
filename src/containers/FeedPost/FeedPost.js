@@ -2,14 +2,18 @@ import React from 'react';
 import Header from '../../components/Header/header';
 import './FeedPost.css';
 import LikeCompnent from './LikeCompnent/LikeComponent';
+import {Link} from 'react-router-dom';
 const feedpost = (props) => {
     return (
-        <article className="post">
+        
+        <article className="feedpost">
             <Header authorImg = {props.authorProfileImage} username = {props.username}/>
             <div className='lowerSection'>
                 <img src={props.image} className='postImg' alt={props.caption}/>
                 <LikeCompnent
+                    feedpost
                     url = {props.url}
+                    id = {props.id}
                     token = {props.token}
                     likes = {props.likes}
                     liked = {props.liked}/>

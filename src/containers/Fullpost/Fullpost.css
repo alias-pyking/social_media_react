@@ -1,0 +1,17 @@
+.fullPost{
+    display:flex;
+    flex-direction: row;
+    padding:16px;
+    width: max-content;
+    box-shadow: 0   4px 8px 0 rgba(0,0,0,0.2);
+}
+.commentHead{
+    top: 0;
+}
+.commentSection{
+    margin:10px;
+    z-index: 1;
+    height:700px;
+    scroll-behavior: smooth;
+    overflow-y:auto;
+}

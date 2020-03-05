@@ -22,9 +22,10 @@ class Feed extends Component{
         let posts = <Spinner/>;
         const {loading} = this.props;
         if(!loading) {
-            posts = this.props.posts.map((post,index) => {
+            posts = this.props.posts.map((post) => {
                 return <FeedPost
-                key = {index}
+                key = {post.id}
+                id = {post.id}
                 url ={post.url}
                 token = {this.props.token}
                 authorProfileImage= {post.userProfileImage}

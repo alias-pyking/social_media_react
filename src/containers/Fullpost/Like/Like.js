@@ -1,8 +1,8 @@
 import React from 'react';
-import './LikeComponent.css';
+import './Like.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-export default class LikeComponent extends React.Component{
+export default class Like extends React.Component{
     state = {
         liked: this.props.liked,
         likes: this.props.likes,
@@ -40,6 +40,7 @@ export default class LikeComponent extends React.Component{
     render(){
         let likeButtonClasses = ['postlikeButton'];
         const {liked, likes} = this.state;
+        console.log(this.state);
         console.log(liked);
         if(liked) {
             likeButtonClasses.push('Liked');
@@ -53,10 +54,9 @@ export default class LikeComponent extends React.Component{
             <div>
             <div className='buttons'>
                 <button className={likeButtonClasses.join(' ')} onClick = {this.handleLikeclick}>Like</button>
-                {this.props.feedpost ? <Link to={'/'+this.props.id} className='postlikeButton'>Comment</Link>:''}
             </div>
             <div className='likesSection'>
-                <p>{this.state.likes} likes {this.state.likes ? <b> You liked </b>:''} </p>
+                <p>{this.state.likes} likes {this.state.liked ? <b> You liked </b>:''} </p>
             </div>
             </div>
         )

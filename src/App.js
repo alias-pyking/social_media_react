@@ -4,6 +4,7 @@ import  Layout from './containers/Layout/Layout';
 import {Switch, Route,Redirect, Router} from 'react-router-dom';
 import Auth from './containers/Auth/Auth';
 import Feed from './containers/Feed/Feed';
+import Fullpost from './containers/Fullpost/Fullpost';
 import * as action from './store/actions/index';
 import {connect} from 'react-redux';
 class  App extends React.Component {
@@ -23,6 +24,7 @@ class  App extends React.Component {
         <Switch>
           <Route path = "/profile" exact component = {Feed} />
           <Route path="/auth" exact component = {Auth} />
+          <Route path="/:id" component = {Fullpost} />
           <Route path = "/" exact component={Feed} />
 
         </Switch>

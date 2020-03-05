@@ -1,11 +1,10 @@
 import React from 'react';
 import './header.css';
-
+import SmallProfile from '../SmallProfile/SmallProfile'
 const header = props => {
     return (
         <div className='header'>
-            <img src = {props.authorImg} className='authorImg'/>
-            <span className='authorName'>{props.username}</span>
+            <SmallProfile profileImg = {props.authorImg} authorName = {props.username}/>
         </div>
     );
 }
