@@ -1,28 +1,44 @@
 import * as actionTypes from './actionTypes';
-
-export const feedLoadingStart = () => {
+import axios from 'axios';
+const feedLoadingStart = () => {
     return {
         type:actionTypes.FEED_LOADING_START,
     }
 };
 
-export const feedLoadingSuccess = (posts) =>{
+const feedLoadingSuccess = (posts) =>{
     return {
         type: actionTypes.FEED_LOADING_SUCCESS,
         posts:posts
     }
 };
 
-export const feedLoadingFailed = (error) =>{
+const feedLoadingFailed = (error) =>{
     return {
-        type: actionTypes.FEED_LOADING_SUCCESS,
+        type: actionTypes.FEED_LOADING_FAIL,
         error : error
     }
 }
 
-export const loadFeed = () => {
+export const loadFeed = (token) => {
     return dispatch => {
         dispatch(feedLoadingStart());
-        let 
+        const url = 'http://127.0.0.1:8000/api/';
+        const header = {
+            'Content-Type' :'application/json',
+            'Authorization': `token ${token}`
+        };
+        axios.get(url)
+        .then((response) => {
+            console.log('ok im here');
+            console.log(response.data);
+            dispatch(feedLoadingSuccess(response.data.results));
+        })
+        .catch((error) =>{
+            console.log(error);
+            dispatch(feedLoadingFailed(error));
+        })
+        
+
     }
-}
+};

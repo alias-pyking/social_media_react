@@ -14,11 +14,11 @@ class  App extends React.Component {
     let routes = (
       <Switch>
       <Route path='/auth' exact component = {Auth}/>
-      <Route path='/' exact component = {Feed} />
       <Redirect to ='/auth'/>
       </Switch>
     )
-    if(this.props.isAuth) {
+    const {isAuth} = this.props;
+    if(isAuth) {
       routes = (
         <Switch>
           <Route path = "/" exact component={Feed} />
@@ -28,7 +28,6 @@ class  App extends React.Component {
         </Switch>
       );
     }
-    console.log(routes);
     return (
       <div className="App">
         <Layout>

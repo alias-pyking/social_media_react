@@ -1,1 +1,3 @@
-export {authStart, authFail, authSuccess,auth, logout,authCheckState, setAuthRedirect} from './auth';
+export {auth, logout,authCheckState, setAuthRedirect} from './auth';
+
+export {loadFeed} from './feed';

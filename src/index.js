@@ -6,6 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
 import reducer from './store/reducers/reducers';
 import authReducer from './store/reducers/auth';
+import feedReducer from './store/reducers/feed';
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import {BrowserRouter} from 'react-router-dom';
@@ -14,6 +15,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
     auth:authReducer,
+    feed:feedReducer,
     reducer:reducer,
 })
 const store = createStore(rootReducer,composeEnhancers(applyMiddleware(thunk)));

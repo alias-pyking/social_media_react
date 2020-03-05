@@ -3,9 +3,10 @@ import {connect} from 'react-redux';
 import Input from '../../components/UI/Input/Input';
 import Button from '../../components/UI/Button/Button';
 import Spinner from '../../components/UI/Spinner/Spinner';
-import * as action from '../../store/actions/index';
+import * as actionCreators from '../../store/actions/index';
 import './Auth.css';
 import * as controls from './utility';
+import {Redirect} from 'react-router-dom';
 class Auth extends React.Component {
     constructor (props) {
         super(props);
@@ -134,9 +135,10 @@ class Auth extends React.Component {
             );
         }
         let authRedirect = null;
-        // if(this.props.isAuth){
-        //     authRedirect = <Redirect to = {this.props.authRedirectPath}/>
-        // }
+        const {isAuth} = this.props;
+        if(isAuth){
+            authRedirect = <Redirect to = {this.props.authRedirectPath}/>
+        }
         return(
             <div className = 'Auth'>
                 {authRedirect}
@@ -163,9 +165,9 @@ const mapStateToProps = state => {
 const maptDispatchtoProps = dispatch => {
     return {
         onAuth : (username, email, password, isSignUp) => {
-            return dispatch(action.auth(username, email, password, isSignUp));
+            return dispatch(actionCreators.auth(username, email, password, isSignUp));
         },
-        onSetAuthRedirectPath:()=>dispatch(action.setAuthRedirect('/')),
+        onSetAuthRedirectPath:()=>dispatch(actionCreators.setAuthRedirect('/')),
     }
 }
 

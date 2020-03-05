@@ -2,58 +2,63 @@ import React,{ Component} from 'react';
 import './Feed.css';
 import axios from 'axios';
 import FeedPost from '../FeedPost/FeedPost';
+import * as actionCreators from '../../store/actions/index';
 import {connect} from 'react-redux';
-
+import Spinner from '../../components/UI/Spinner/Spinner';
+ 
 class Feed extends Component{
-    state = {
-        posts:[],
-        loaded:false,
-    }
     componentDidMount(){
-        // axios.get('http://127.0.0.1:8000/api/')
-        // .then((response) => {
-        //     console.log(response);
-        //     this.setState({posts:response.data.results, loaded:true});
-        // })
-        // .catch((error) => {
-        //     console.log(error);
-        // })
-        // this.props.onLoadingPosts();
+        const {isAuth}  = this.props;
+        if(!isAuth) {
+            this.props.history.push('/auth');
+        }
+        const {loadPosts,token} = this.props;
+        console.log(loadPosts);
+        loadPosts(token);
+
     }
 
     render(){
-        // const posts = this.state.posts.map(post =>{
-        //     return <FeedPost
-        //             key = {post.url}
-        //             url ={post.url}
-        //             authorProfileImage= {post.userProfileImage}
-        //             authorProfileUrl = {post.userProfileUrl}
-        //             username = {post.userName}
-        //             image = {post.image}
-        //             caption = {post.caption}
-        //             likes = {post.likes}
-        //             liked = {post.liked}
-        //             commentsUrl = {post.comments}
-        //             />
-        // })
+        let posts = <Spinner/>;
+        const {loading} = this.props;
+        if(!loading) {
+            posts = this.props.posts.map((post,index) => {
+                return <FeedPost
+                key = {index}
+                url ={post.url}
+                authorProfileImage= {post.userProfileImage}
+                authorProfileUrl = {post.userProfileUrl}
+                username = {post.userName}
+                image = {post.image}
+                caption = {post.caption}
+                likes = {post.likes}
+                liked = {post.liked}
+                commentsUrl = {post.comments}
+                />
+            });
+            console.log(this.props);
+            console.log(this.props.posts);
+        }
         return (
-            <div onClick = {this.props.onLoadingPosts}>
-            {this.props.isAuth ? <p>authenticated</p>: <p> Not authenticated</p>}
+            <div>
+                {posts}
             </div>
-        );
+        )
     }
 
 }
 
 const mapStateToProps = state => {
     return {
-        posts:state.posts,
-        isAuth: state.auth.token !== null
+        posts:state.feed.posts,
+        isAuth: state.auth.token !== null,
+        token: state.auth.token,
+        loading:state.feed.loading,
     }
 };
 const mapDispatchToProps = dispatch => {
     return {
-        onLoadingPosts : () => dispatch({type:'LOADPOSTS'})
+        loadPosts:(token) => dispatch(actionCreators.loadFeed(token)),
     }
 }
 
