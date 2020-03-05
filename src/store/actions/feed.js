@@ -23,16 +23,15 @@ const feedLoadingFailed = (error) =>{
 export const loadFeed = (token) => {
     return dispatch => {
         dispatch(feedLoadingStart());
-        const url = 'http://127.0.0.1:8000/api/';
+        const url = 'http://127.0.0.1:8000/api/home/';
         const header = {
-            'Content-Type' :'application/json',
-            'Authorization': `token ${token}`
+            headers:{'Authorization': `token ${token}`},
         };
-        axios.get(url)
+        axios.get(url, header)
         .then((response) => {
             console.log('ok im here');
             console.log(response.data);
-            dispatch(feedLoadingSuccess(response.data.results));
+            dispatch(feedLoadingSuccess(response.data));
         })
         .catch((error) =>{
             console.log(error);

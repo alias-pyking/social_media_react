@@ -26,6 +26,7 @@ class Feed extends Component{
                 return <FeedPost
                 key = {index}
                 url ={post.url}
+                token = {this.props.token}
                 authorProfileImage= {post.userProfileImage}
                 authorProfileUrl = {post.userProfileUrl}
                 username = {post.userName}

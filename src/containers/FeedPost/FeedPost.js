@@ -1,16 +1,19 @@
 import React from 'react';
 import Header from '../../components/Header/header';
 import './FeedPost.css';
-import PostButtons from './PostButtons/PostButtons';
+import LikeCompnent from './LikeCompnent/LikeComponent';
 const feedpost = (props) => {
     return (
         <article className="post">
             <Header authorImg = {props.authorProfileImage} username = {props.username}/>
             <div className='lowerSection'>
-                <img src={props.image} className='postImg'/>
-                <PostButtons url = {props.url} comments = {props.commentsUrl}/>
+                <img src={props.image} className='postImg' alt={props.caption}/>
+                <LikeCompnent
+                    url = {props.url}
+                    token = {props.token}
+                    likes = {props.likes}
+                    liked = {props.liked}/>
                 <div className='footer'>
-                <p> likes {props.likes} You liked {props.liked}</p>
                 <p><b>{props.username}</b>  {props.caption}</p>
                 </div>
             </div>

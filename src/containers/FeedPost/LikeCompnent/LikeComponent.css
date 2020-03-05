@@ -8,13 +8,18 @@
     outline: none;
     border:1px solid #333;
 }
-.postlikeButton:hover{
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+}
+.Liked {
     background:#333;
     border:#fff;
     color:#fff;
     cursor: pointer;
 }
-.buttons {
+.likesSection{
     display: flex;
     flex-direction: row;
 }

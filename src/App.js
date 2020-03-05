@@ -21,10 +21,10 @@ class  App extends React.Component {
     if(isAuth) {
       routes = (
         <Switch>
-          <Route path = "/" exact component={Feed} />
           <Route path = "/profile" exact component = {Feed} />
-          <Route path='/auth' exact component = {Auth}/>
-          <Redirect to = '/'/>
+          <Route path="/auth" exact component = {Auth} />
+          <Route path = "/" exact component={Feed} />
+
         </Switch>
       );
     }

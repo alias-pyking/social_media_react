@@ -100,9 +100,9 @@ class Auth extends React.Component {
 
     }
     componentDidMount(){
-        if(!this.props.building && this.props.authRedirectPath !=='/'){
-            this.props.onSetAuthRedirectPath();
-        }
+        // if(this.props.authRedirectPath !=='/'){
+        //     this.props.onSetAuthRedirectPath();
+        // }
     }
 
     render(){
@@ -167,7 +167,7 @@ const maptDispatchtoProps = dispatch => {
         onAuth : (username, email, password, isSignUp) => {
             return dispatch(actionCreators.auth(username, email, password, isSignUp));
         },
-        onSetAuthRedirectPath:()=>dispatch(actionCreators.setAuthRedirect('/')),
+        // onSetAuthRedirectPath:()=>dispatch(actionCreators.setAuthRedirect('/')),
     }
 }
 
