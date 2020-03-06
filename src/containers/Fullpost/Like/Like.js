@@ -40,8 +40,6 @@ export default class Like extends React.Component{
     render(){
         let likeButtonClasses = ['postlikeButton'];
         const {liked, likes} = this.state;
-        console.log(this.state);
-        console.log(liked);
         if(liked) {
             likeButtonClasses.push('Liked');
         }

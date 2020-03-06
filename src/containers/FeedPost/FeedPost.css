@@ -21,7 +21,7 @@
     padding: 16px;
 }
 @media (max-width:600px){
-    .post{
+    .feedpost{
         width:inherit;
         margin:5px;
     }
@@ -29,7 +29,7 @@
 @media only screen 
 and (min-device-width : 768px) 
 and (max-device-width : 1024px)  { 
-    .post{
+    .feedpost{
         width: inherit;
         margin:5px
     }

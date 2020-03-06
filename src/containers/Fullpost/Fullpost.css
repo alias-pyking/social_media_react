@@ -2,16 +2,108 @@
     display:flex;
     flex-direction: row;
     padding:16px;
-    width: max-content;
+    width:inherit;
     box-shadow: 0   4px 8px 0 rgba(0,0,0,0.2);
+    margin-top:16px;
+    margin-bottom: 16px;
 }
 .commentHead{
     top: 0;
 }
 .commentSection{
+    float: right;
     margin:10px;
-    z-index: 1;
-    height:700px;
+    z-index: 1; 
+}
+.post{
+    width:65%;
+}
+.commentsList{
+    width: inherit;
+    height:600px;
     scroll-behavior: smooth;
-    overflow-y:auto;
+    overflow-y:auto;   
+}
+.addComment{
+    width: inherit;
+}
+.addCommentTextArea{
+    padding:16px;
+    width: 350px;
+    height:60px;
+    border-top: none;
+    border-left:none;
+    border-right:none;
+
+}
+.addCommentTextArea:focus{
+    outline: none;
+    border-top:none;
+    border-right: none;
+    transition:0.3s;
+    border-bottom: 1px solid rgb(40, 152, 204);
+}
+.addComment form{
+    display: flex;
+    flex-direction:column;
+}
+.addCommentbutton{
+    float: right;
+    width: fit-content;
+    padding:16px;
+    background-color: transparent;
+    background:transparent;
+    border:none;
+    outline:none;
+    color:rgb(40, 152, 204);
+    cursor:pointer;
+    display: block;
+}
+.addCommentbutton:hover{
+    border:1px solid rgba(0,0,0,0.2))
+}   
+.errorText{
+    color:red;
+    font-size: 15px;
+}
+@media (max-width:600px){
+    .fullPost{
+        display:flex;
+        flex-direction: column;
+        padding:16px;
+        width: 90%;
+        overflow-x: hidden;
+        box-shadow: 0   4px 8px 0 rgba(0,0,0,0.2);
+        align-self: center;
+    }
+    .post{
+        width: 100%;
+    }
+    .addCommentTextArea{
+        padding:16px;
+        width: 90%;
+        height:60px;
+        border-top: none;
+        border-left:none;
+        border-right:none;
+        overflow-x: hidden;
+    
+    }
+}
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px)  { 
+    .fullPost{
+        display:flex;
+        flex-direction: row;
+        padding:16px;
+        width: 100%;
+        box-shadow: 0   4px 8px 0 rgba(0,0,0,0.2);
+    }
+    .post{
+        width: 50%;
+        height: max-content;
+    }
+    .commentSection{
+    }
 }
