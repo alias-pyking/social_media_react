@@ -43,8 +43,10 @@ class Followers  extends React.Component {
             })
         }
         return (
-            <div>
+            <div className='row'>
+                <div className='col s12 m8'>
                 {users}
+                </div>
             </div>
         );
     }

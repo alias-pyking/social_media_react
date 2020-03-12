@@ -1,17 +1,16 @@
 .fullPost{
     display:flex;
     flex-direction: row;
-    padding:16px;
+    /* padding:16px;
     width:inherit;
     margin-top:16px;
-    margin-bottom: 100px;
+    margin-bottom: 100px; */
 }
 .commentHead{
     top: 0;
 }
 .commentSection{
     float: right;
-    margin:10px;
     z-index: 1000; 
 }
 .post{
@@ -20,7 +19,7 @@
 }
 .commentsList{
     width: inherit;
-    height: 70vh;
+    height: 600px;
     scroll-behavior: smooth;
     overflow-y:auto;   
 }
@@ -30,7 +29,7 @@
 }
 .addCommentTextArea{
     padding:16px;
-    width: inherit;
+    width: 350px;
     height:60px;
     border-top: none;
     border-left:none;
@@ -71,8 +70,7 @@
     .fullPost{
         display:flex;
         flex-direction: column;
-        padding:10px;
-        width: 90%;
+        width: 100%;
         height:fit-content;
         overflow-x: hidden;
         align-self: center;
@@ -85,8 +83,7 @@
         height: 600px;
     }
     .addCommentTextArea{
-        padding:16px;
-        width: 90%;
+        width: 100%;
         height:60px;
         border-top: none;
         border-left:none;
@@ -101,14 +98,6 @@ and (max-device-width : 1024px)  {
     .fullPost{
         display:flex;
         flex-direction: row;
-        padding:16px;
         width: 100%;
-        box-shadow: 0   4px 8px 0 rgba(0,0,0,0.2);
-    }
-    .post{
-        width: 50%;
-        height: max-content;
-    }
-    .commentSection{
     }
 }

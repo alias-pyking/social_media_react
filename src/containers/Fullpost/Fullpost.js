@@ -104,18 +104,23 @@ class FullPost extends React.Component{
         if(!postLoading) {
             const {post}  = this.state;
             displayPost = (
-                <div className='post'>
+                <div className='card'>
                     <Header user_id = {post.user_id} authorImg = {post.userProfileImage} username = {post.userName} />
                     <div className='lowerSection'>
-                        <img src={post.image} className='postImg' alt={post.caption}/>
-                        <Like
-                            token = {token}
-                            url = {post.url}
-                            id = {post.id}
-                            likes = {post.likes}
-                            liked = {post.liked}/>
-                        <div className='footer'>
+                        <div className='card-image'>
+                            <img src={post.image} className='postImg' alt={post.caption}/>
+                        </div>
+                        
+                        <div className='footer card-content'>
                             <p> <b>{post.userName}</b>  {post.caption}</p>
+                        </div>
+                        <div className='card-action'>
+                            <Like
+                                token = {token}
+                                url = {post.url}
+                                id = {post.id}
+                                likes = {post.likes}
+                                liked = {post.liked}/>
                         </div>
                     </div>
                 </div>
@@ -135,9 +140,11 @@ class FullPost extends React.Component{
             });
         }
         return(
-            <div className='fullPost'>
+            <div className='fullPost row'>
+                <div className='col s12'>
                 {displayPost}
-                <div className='commentSection'> 
+                </div>
+                <div className='commentSection col'> 
                     <h3 className='commentHead'>Comments</h3>
                     <div className='commentsList'>
                         {displayComments}   
@@ -150,14 +157,17 @@ class FullPost extends React.Component{
                             placeholder='Add a comment'
                             value={this.state.addCommentText}
                             />
-                            {this.state.postingComment?<p>posting...</p>:''}
+                            
                             {error ? <p className='errorText'>{error}</p>:''}
 
                             <button
                             onClick={this.submitCommentForm}
-                            className='addCommentbutton' 
+                            className='btn waves-effect waves-light' 
                             type='submit'
-                            >Post</button>
+                            >
+                            {this.state.postingComment? 'posting...':'Post'}
+                            <i className='material-icons right'>send</i>
+                            </button>
                         </form>
                     </div>
                     

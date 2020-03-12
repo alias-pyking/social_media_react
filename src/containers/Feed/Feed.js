@@ -44,9 +44,11 @@ class Feed extends Component{
             console.log(this.props.posts);
         }
         return (
-            <div className='feed'>
+            <div className='row'>
                 <Link to='/new'>Add new </Link>
-                {posts}
+                <div className='col s12 m7'>
+                    {posts}
+                </div>
             </div>
         )
     }

@@ -111,7 +111,7 @@ class EditProfile extends React.Component{
                         <br/>
                         <label>Email</label><br/>
                         <input type='email' value={email} onChange = {(event) => this.handleOnInputChange(event,'email')} /><br/>
-                        <button type='submit'>
+                        <button className='btn waves-effect waves-light' type='submit'>
                         {this.state.saving ?  'Saving...'
                         :'Save'
                         }
