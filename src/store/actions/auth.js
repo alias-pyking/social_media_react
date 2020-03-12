@@ -6,11 +6,12 @@ export const authStart =() => {
         type: actionTypes.AUTH_START,
     }
 };
-export const authSuccess = (token, userId) => {
+export const authSuccess = (token, userId,username) => {
     return {
         type: actionTypes.AUTH_SUCCESS,
         token: token,
         userId:userId,
+        username:username
     }
 };
 
@@ -65,7 +66,8 @@ export const auth = (username, email, password, isSignUp) => {
         .then((response) =>{
             localStorage.setItem('token',response.data.token);
             localStorage.setItem('userId', response.data.user.id);
-            dispatch(authSuccess(response.data.token, response.data.user.id));
+            localStorage.setItem('username',response.data.user.username);
+            dispatch(authSuccess(response.data.token, response.data.user.id, response.data.user.username));
         })
         .catch((error) => {
             console.log(error);
@@ -85,7 +87,8 @@ export const authCheckState = () =>{
             logout();
         } else {
             const userId = localStorage.getItem('userId');
-            dispath(authSuccess(token, userId));
+            const username = localStorage.getItem('username');
+            dispath(authSuccess(token, userId, username));
         }
     }
 }

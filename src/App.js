@@ -11,9 +11,10 @@ import MyProfile from './containers/MyProfile/MyProfile';
 import Account from './containers/Account/Account';
 import Following from './containers/Following/Following';
 import Followers from './containers/Followers/Followers';
-
+import EditProfile from './containers/EditProfile/EditProfile';
 import * as action from './store/actions/index';
 import {connect} from 'react-redux';
+import AddPost from './containers/AddPost/AddPost';
 class  App extends React.Component {
   componentDidMount(){
     this.props.tryAutoSignIn();
@@ -29,9 +30,12 @@ class  App extends React.Component {
     if(isAuth) {
       routes = (
         <Switch>
-
-          <Route path = "/profile" exact component = {MyProfile} />
+          <Route path="/new" exact component = {AddPost}/>
           <Route path="/auth" exact component = {Auth} />
+          <Route path= "/profile/edit" component = {EditProfile} />
+          <Route path = "/profile" exact component = {MyProfile} />
+          
+          
 
           <Route path="/p/:id" component = {Fullpost} />
           <Route path = "/" exact component={Feed} />

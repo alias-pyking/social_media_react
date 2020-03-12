@@ -33,20 +33,26 @@ class User extends React.Component {
     }
     render() {
         const {follows} = this.state;
-        console.log(follows);
+        const {username,user_id, profileImg,userId} = this.props;
+        console.log(userId,user_id);
+        const show = user_id == userId;
+        console.log(show);
         return (
             <div className='user'>
                 <SmallProfile 
-                profileImg= {this.props.profileImg}
-                user_id = {this.props.user_id} 
-                authorName = {this.props.username}
+                profileImg= {profileImg}
+                user_id = {user_id} 
+                authorName = {username}
                 />
+            {show?'':
             <button
             className='followsButton'
             onClick = {this.handleFollowClick}
             >
             {follows ? 'Unfollow': 'Follow'}
+            
             </button>
+            }
             </div>
         );
     }
@@ -54,6 +60,7 @@ class User extends React.Component {
 const mapStateToProps = state => {
     return {
         token:state.auth.token,
+        userId:state.auth.userId,
     }
 }
 export default connect(mapStateToProps)(User);

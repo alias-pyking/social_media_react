@@ -33,8 +33,9 @@ class Profile extends React.Component{
         })
     }
     render(){
-        const {user_id} = this.props;
+        const {user_id,userId} = this.props;
         const {follows} = this.state;
+        const show = user_id == userId;
         console.log(user_id);
         return (
             <div className='profile'>
@@ -46,12 +47,14 @@ class Profile extends React.Component{
                             <Link to= {`/acc/${user_id}/following`}>Following {this.props.following}</Link>
                         </div>
                         
+                        {show?'':
                         <button
                         onClick={this.handleFollowClick}
                         className = 'followButton'
                         >
                             {follows?'Unfollow':'Follow' }
                         </button> 
+                        }
                     </div>
                 </div>
                 <b className='username'>{this.props.username}</b>
@@ -62,6 +65,7 @@ class Profile extends React.Component{
 const mapStateToProps = state => {
     return {
         token:state.auth.token,
+        userId:state.auth.userId,
     }
 }
 export default connect(mapStateToProps)(Profile);

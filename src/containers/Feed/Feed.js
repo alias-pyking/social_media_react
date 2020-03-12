@@ -4,6 +4,7 @@ import FeedPost from '../FeedPost/FeedPost';
 import * as actionCreators from '../../store/actions/index';
 import {connect} from 'react-redux';
 import Spinner from '../../components/UI/Spinner/Spinner';
+import { Link } from 'react-router-dom';
  
 class Feed extends Component{
     componentDidMount(){
@@ -44,6 +45,7 @@ class Feed extends Component{
         }
         return (
             <div className='feed'>
+                <Link to='/new'>Add new </Link>
                 {posts}
             </div>
         )

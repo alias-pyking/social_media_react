@@ -7,12 +7,14 @@ import * as actionCreators from '../../store/actions/index';
 import './Auth.css';
 import * as controls from './utility';
 import {Redirect} from 'react-router-dom';
+import axios from 'axios';
 class Auth extends React.Component {
     constructor (props) {
         super(props);
         this.state  = {
             controls :{...controls.signUpcontrols},
             isSignUp:true,
+            usernameError:false,
         }
     }
     checkValidity(value, rules){
@@ -51,11 +53,28 @@ class Auth extends React.Component {
             const email = this.state.controls.email.value || null;
             const password = this.state.controls.password.value || null;
             const password2 = this.state.controls.ConfirmPassword.value || null;
-            if(username && email && password && password2) {
-                this.props.onAuth(username, email, password, this.state.isSignUp);
-            } else {
-                console.log('Empty details')
-            }
+
+            const url = 'http://127.0.0.1:8000/api/check_username/'+username;
+            let success = false;
+            axios.get(url)
+            .then(response =>{
+                console.log(response.data);
+                success = response.data.success;
+                if(success){
+                    this.setState({usernameError:false})
+                    if(username && email && password && password2) {
+                        this.props.onAuth(username, email, password, this.state.isSignUp);
+                    } else {
+                        console.log('Empty details')
+                    }
+                } else{
+                    this.setState({usernameError:true})
+                }
+
+            })
+            .catch(error => {
+                console.log(error);
+            });
         } else {
             const username = this.state.controls.username.value || null;
             const password = this.state.controls.password.value || null;
@@ -143,8 +162,10 @@ class Auth extends React.Component {
             <div className = 'Auth'>
                 {authRedirect}
                 {errorMessage}
+
                 <form onSubmit={this.submitHandler}>
                     {form}
+                    {this.state.usernameError? <p>This username already exists..</p>:''}
                     <Button clicked ={this.submitHandler}  btnType="Success">SIGN {this.state.isSignUp?'UP':'IN'} </Button>
                 </form>
                 <Button
