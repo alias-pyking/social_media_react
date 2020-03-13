@@ -1,5 +1,5 @@
 import * as actionTypes from './actionTypes';
-import axios from 'axios';
+import axios from '../../axios-insta';
 
 const explorePostsLoadingStart = () =>{
     return {
@@ -24,7 +24,7 @@ const explorePostsLoadingSuccess = (posts) => {
 export const loadExplorePosts = (token) => {
     return dispatch => {
         dispatch(explorePostsLoadingStart());
-        const url = 'http://127.0.0.1:8000/api/explore/';
+        const url = 'explore/';
         const header = {
             headers:{'Authorization': `token ${token}`},
         };
@@ -37,7 +37,5 @@ export const loadExplorePosts = (token) => {
             console.log(error);
             dispatch(explorePostsLoadingFail(error));
         });
-        
-
     }
 };

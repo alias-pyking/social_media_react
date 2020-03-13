@@ -2,16 +2,16 @@ import React from 'react';
 import './Layout.css';
 import {connect} from 'react-redux';
 import NavBar from '../Navigation/NavBar/NavBar';
-import { Link } from 'react-router-dom';
+import Aux from '../../containers/hoc/Auxiliary';
 const layout = (props) => {
     return (
-        <React.Fragment>
+        <Aux>
             <NavBar/>
             <div className='container'>
                 {props.children}
                 
             </div>
-        </React.Fragment>  
+        </Aux>  
     );
 }
 const mapStateToProps = (state) =>{

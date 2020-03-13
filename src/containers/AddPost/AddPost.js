@@ -1,7 +1,6 @@
 import React from 'react';
-import axios,{post} from 'axios';
+import {post} from 'axios';
 import { connect } from 'react-redux';
-import {Redirect} from 'react-router-dom'
 import './AddPost.css';
 class AddPost extends React.Component{
     state = {
@@ -17,6 +16,8 @@ class AddPost extends React.Component{
                 break;
             case 'caption':
                 this.setState({caption:event.target.value });
+                break;
+            default:
                 break;
         }
     }

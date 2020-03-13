@@ -2,7 +2,6 @@ import React from 'react';
 import Header from '../../components/Header/header';
 import './FeedPost.css';
 import LikeCompnent from './LikeCompnent/LikeComponent';
-import {Link} from 'react-router-dom';
 const feedpost = (props) => {
     return (
         

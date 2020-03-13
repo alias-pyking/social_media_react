@@ -7,7 +7,7 @@ const post = props =>{
         backgroundRepeat:'no-repeat',
     }
     return (
-        <div className='col s12 m6 l4 post'>
+        <div className='col s12 m6 l4'>
 
         <Link to={'/p/'+props.id}>
             

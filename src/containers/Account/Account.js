@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+import axios from '../../axios-insta';
 import {connect} from 'react-redux';
 import Profile from '../MyProfile/Profile/Profile';
 import Posts from '../../components/Posts/Posts';
@@ -12,9 +12,8 @@ class Account extends React.Component {
         error:null,
     }
     componentDidMount(){
-        const url = 'http://127.0.0.1:8000/api';
         const {id} = this.props.match.params;
-        const accountUrl = `${url}/auth/accounts`;
+        const accountUrl = `auth/accounts`;
         const profileUrl = `${accountUrl}/${id}/`;
         const postsUrl = `${accountUrl}/${id}/posts`;
         const {token} = this.props;
@@ -60,9 +59,11 @@ class Account extends React.Component {
         }
         const {id} = this.props.match.params;
         return(
-            <div className='account'>
-                {displayProfile}
-                {profilePosts}
+            <div className='col s12'>
+                <div className='account'>
+                    {displayProfile}
+                    {profilePosts}
+                </div>
             </div>
         );
     }

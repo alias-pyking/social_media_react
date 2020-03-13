@@ -1,6 +1,5 @@
 import React from 'react';
 import NavBarItem from './NavBarItem/NavBarItem';
-import { NavLink } from 'react-router-dom';
 const bottomBar = (props) => {
     return (
         <div className='navbar-fixed'>

@@ -4,8 +4,8 @@ import FeedPost from '../FeedPost/FeedPost';
 import * as actionCreators from '../../store/actions/index';
 import {connect} from 'react-redux';
 import Spinner from '../../components/UI/Spinner/Spinner';
-import { Link } from 'react-router-dom';
- 
+import withErrorHandler from '../hoc/withErrorHandler/withErrorHandler';
+ import axios from '../../axios-insta';
 class Feed extends Component{
     componentDidMount(){
         const {isAuth}  = this.props;
@@ -18,7 +18,7 @@ class Feed extends Component{
 
     }
     loadPaginationPosts = () => {
-        
+
     }
     render(){
         let posts = <Spinner/>;
@@ -70,4 +70,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Feed);
+export default connect(mapStateToProps,mapDispatchToProps)(withErrorHandler(Feed,axios));

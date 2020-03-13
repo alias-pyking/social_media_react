@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+import axios from '../../axios-insta';
 import './Fullpost.css';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import Header from '../../components/Header/header';
@@ -20,9 +20,8 @@ class FullPost extends React.Component{
         const {token} = this.props;
         console.log(token);
         const {id} = this.props.match.params;
-        const url = 'http://127.0.0.1:8000/api/';
-        const postUrl = url+id;
-        const commentsUrl = postUrl+"/comments";
+        const postUrl = `${id}`
+        const commentsUrl = id+"/comments";
         const header = {
             headers:{'Authorization': `token ${token}`},
         };
@@ -67,8 +66,7 @@ class FullPost extends React.Component{
             const {id} = this.props.match.params;
             const {token} = this.props;
             const commentText = this.state.addCommentText;
-            const url = 'http://127.0.0.1:8000/api/';
-            const addCommentUrl = url + id +'/comments/add_comment/';
+            const addCommentUrl = id +'/comments/add_comment/';
             console.log(addCommentUrl);
             const data = {
                 text:commentText

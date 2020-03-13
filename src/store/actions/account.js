@@ -1,5 +1,5 @@
 import * as actionTypes from './actionTypes';
-import axios from 'axios';
+import axios from '../../axios-insta';
 const loadingProfileStart = () =>{
     return {
         type:actionTypes.PROFILE_LOADING_START,
@@ -40,8 +40,7 @@ const loadingProfilePostsSuccess = (posts) =>{
 export const loadProfile = (token) => {
     return dispatch =>{
         dispatch(loadingProfileStart());
-        const url = 'http://127.0.0.1:8000/api';
-        const profileUrl = url+'/profile';
+        const profileUrl = 'profile';
         const headers = {
             headers :{
                 Authorization:`token ${token}`,
@@ -61,8 +60,7 @@ export const loadProfile = (token) => {
 export const loadProfilePosts = (userId, token) =>{
     return dispatch => {
         dispatch(loadingProfilePostsStart());
-        const url = 'http://127.0.0.1:8000/api';
-        const postsUrl = url+'/auth/accounts/'+userId+'/posts';
+        const postsUrl = 'auth/accounts/'+userId+'/posts';
         const headers = {
             headers :{
                 Authorization:`token ${token}`,

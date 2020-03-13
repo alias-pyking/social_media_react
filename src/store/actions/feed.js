@@ -1,5 +1,5 @@
 import * as actionTypes from './actionTypes';
-import axios from 'axios';
+import axios from '../../axios-insta';
 const feedLoadingStart = () => {
     return {
         type:actionTypes.FEED_LOADING_START,
@@ -23,7 +23,7 @@ const feedLoadingFailed = (error) =>{
 export const loadFeed = (token) => {
     return dispatch => {
         dispatch(feedLoadingStart());
-        const url = 'http://127.0.0.1:8000/api/home/';
+        const url = 'home/';
         const header = {
             headers:{'Authorization': `token ${token}`},
         };

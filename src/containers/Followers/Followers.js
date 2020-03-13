@@ -1,6 +1,6 @@
 import React from 'react';
 import './Followers.css';
-import axios from 'axios';
+import axios from '../../axios-insta';
 import {connect} from 'react-redux';
 import User from '../User/User';
 class Followers  extends React.Component {
@@ -11,7 +11,7 @@ class Followers  extends React.Component {
     }
     componentDidMount(){
         const {id} = this.props.match.params;
-        const profileUrl = 'http://127.0.0.1:8000/api/auth/accounts/'+id;
+        const profileUrl = 'auth/accounts/'+id;
         const followersUrl = `${profileUrl}/followers`;
         const {token} = this.props;
         const headers = {

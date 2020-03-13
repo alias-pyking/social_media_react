@@ -1,5 +1,5 @@
 import * as actionTypes from './actionTypes';
-import axios from 'axios';
+import axios from '../../axios-insta';
 
 export const authStart =() => {
     return {
@@ -54,9 +54,9 @@ export const auth = (username, email, password, isSignUp) => {
             "email":email,
             "password":password
         }
-        let authUrl = 'http://127.0.0.1:8000/api/auth/register';
+        let authUrl = 'auth/register';
         if(!isSignUp) {
-            authUrl = 'http://127.0.0.1:8000/api/auth/login';
+            authUrl = 'auth/login';
             authData = {
                 "username":username,
                 "password":password
@@ -71,6 +71,7 @@ export const auth = (username, email, password, isSignUp) => {
         })
         .catch((error) => {
             console.log(error);
+            dispatch(authFail(error));
         });
     }
 }

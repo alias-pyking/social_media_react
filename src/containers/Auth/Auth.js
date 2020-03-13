@@ -7,7 +7,8 @@ import * as actionCreators from '../../store/actions/index';
 import './Auth.css';
 import * as controls from './utility';
 import {Redirect} from 'react-router-dom';
-import axios from 'axios';
+import axios from '../../axios-insta';
+import withErrorHandler from '../hoc/withErrorHandler/withErrorHandler';
 class Auth extends React.Component {
     constructor (props) {
         super(props);
@@ -54,7 +55,7 @@ class Auth extends React.Component {
             const password = this.state.controls.password.value || null;
             const password2 = this.state.controls.ConfirmPassword.value || null;
 
-            const url = 'http://127.0.0.1:8000/api/check_username/'+username;
+            const url = 'check_username/'+username;
             let success = false;
             axios.get(url)
             .then(response =>{
@@ -192,4 +193,4 @@ const maptDispatchtoProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, maptDispatchtoProps)(Auth);
+export default connect(mapStateToProps, maptDispatchtoProps)(withErrorHandler(Auth,axios));

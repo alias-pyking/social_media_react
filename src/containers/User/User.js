@@ -2,7 +2,7 @@ import React from 'react';
 import './User.css';
 import SmallProfile from '../../components/SmallProfile/SmallProfile';
 import {connect} from 'react-redux';
-import axios from 'axios';
+import axios from '../../axios-insta';
 class User extends React.Component {
     state = {
         follows : this.props.follows,
@@ -10,8 +10,7 @@ class User extends React.Component {
     handleFollowClick = () => {
         const {follows} = this.state;
         const {user_id, token} = this.props;
-        const url = 'http://127.0.0.1:8000/api';
-        const accountUrl = `${url}/auth/accounts/${user_id}`;
+        const accountUrl = `auth/accounts/${user_id}`;
         let followUrl;
         if(follows) {
             // user already follows the current profile user 

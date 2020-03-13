@@ -9,7 +9,6 @@ class FollowNew extends React.Component {
         error:null,
     }
     componentDidMount(){
-        const {id} = this.props.match.params;
         const url = 'http://127.0.0.1:8000/api/auth/accounts';
         const {token} = this.props;
         const headers = {

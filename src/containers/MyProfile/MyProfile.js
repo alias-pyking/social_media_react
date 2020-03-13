@@ -4,7 +4,6 @@ import {loadProfilePosts,loadProfile} from '../../store/actions/index';
 import Profile from './Profile/Profile';
 import Posts from '../../components/Posts/Posts';
 import './MyProfile.css';
-import { Link } from 'react-router-dom';
 class MyProfile extends Component{
     componentDidMount(){ 
         const {userId, token, onLoadProfile, onLoadProfilePosts}  = this.props;
