@@ -46,7 +46,7 @@ class User extends React.Component {
                 />
             {show?'':
                 <button
-                className='followsButton'
+                className='blue waves-effect waves-light btn'
                 onClick = {this.handleFollowClick}
                 >
                 {follows ? 'Unfollow': 'Follow'}

@@ -162,7 +162,7 @@ class FullPost extends React.Component{
 
                             <button
                             onClick={this.submitCommentForm}
-                            className='btn waves-effect waves-light' 
+                            className='blue btn waves-effect waves-light' 
                             type='submit'
                             >
                             {this.state.postingComment? 'posting...':'Post'}

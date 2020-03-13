@@ -47,7 +47,10 @@ class Profile extends React.Component{
                             <Link to= {`/acc/${user_id}/following`}>Following {this.props.following}</Link>
                         </div>
                         
-                        {show?'':
+                        {show? 
+                        
+                    <Link to='/profile/edit' className='edit waves-effect waves-light'>Edit</Link>
+                        :
                         <button
                         onClick={this.handleFollowClick}
                         className = 'followButton'

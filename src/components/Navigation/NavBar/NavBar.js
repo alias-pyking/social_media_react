@@ -3,6 +3,7 @@ import NavBarItem from './NavBarItem/NavBarItem';
 import { NavLink } from 'react-router-dom';
 const bottomBar = (props) => {
     return (
+        <div className='navbar-fixed'>
         <nav>
             <div className="nav-wrapper blue">
             <ul className=''>
@@ -12,11 +13,12 @@ const bottomBar = (props) => {
                     <NavBarItem path='/explore' name='explore'/>
                     <NavBarItem path = '/profile' name='account_circle' />
                     <NavBarItem path='/acc' name='person_add' />
-                    <NavBarItem path = '/' name='search' />
+                    <NavBarItem path = '/' name='search' /> 
                 </div>
             </ul>
             </div>
         </nav> 
+        </div>
        
     );
 }

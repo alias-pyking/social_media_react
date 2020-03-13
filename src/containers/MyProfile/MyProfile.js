@@ -31,7 +31,6 @@ class MyProfile extends Component{
         }
         return (
             <div className='account'>
-                <Link to='/profile/edit'>Edit</Link>
                     {displayProfile}
                 <div className='col s12'>
                     {profilePosts}

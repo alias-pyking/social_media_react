@@ -31,12 +31,12 @@ export const loadFeed = (token) => {
         .then((response) => {
             console.log('ok im here');
             console.log(response.data);
-            dispatch(feedLoadingSuccess(response.data));
+            dispatch(feedLoadingSuccess(response.data.results));
         })
         .catch((error) =>{
             console.log(error);
             dispatch(feedLoadingFailed(error));
-        })
+        });
         
 
     }

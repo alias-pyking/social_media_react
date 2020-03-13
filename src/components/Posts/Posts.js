@@ -9,6 +9,8 @@ const posts = props => {
                 image = {post.image}
                 caption = {post.caption}
                 id = {post.id}
+                likes = {post.likes}
+                comments = {post.comments}
         />
     });
     return (

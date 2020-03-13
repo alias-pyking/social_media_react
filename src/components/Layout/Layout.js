@@ -6,9 +6,8 @@ import { Link } from 'react-router-dom';
 const layout = (props) => {
     return (
         <React.Fragment>
-            
+            <NavBar/>
             <div className='container'>
-                <NavBar/>
                 {props.children}
                 
             </div>

@@ -5,6 +5,7 @@ import axios,{put} from 'axios';
 class EditProfile extends React.Component{
     state = {
         username:"",
+        previousUserName:"",
         usernameError:false,
         email:"",
         image:null,
@@ -22,6 +23,7 @@ class EditProfile extends React.Component{
             const profile = response.data;
             this.setState({
                 username:profile.username,
+                previousUserName:profile.username,
                 email:profile.email,
                 loading:false
             });
@@ -32,12 +34,28 @@ class EditProfile extends React.Component{
     }
     handleOnSubmit = event => {
         event.preventDefault();
-        const {username, email,image} = this.state;
+        const {username,previousUserName, email,image} = this.state;
         const url = 'http://127.0.0.1:8000/api/check_username/'+username;
         let success = false;
         this.setState({saving:true});
-        axios.get(url)
-        .then(response =>{
+        const {token} = this.props;
+        const config = {
+            headers: {
+                Authorization:`token ${token}`
+            }
+        }
+        if(username == previousUserName){
+            this.update(username,email,image)
+                .then(response => {
+                    console.log(response.data);
+                    this.setState({saving:false});
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        } else {
+            axios.get(url,config)
+            .then(response =>{
             console.log(response.data);
             success = response.data.success;
             if(success){
@@ -59,6 +77,7 @@ class EditProfile extends React.Component{
             console.log(error);
         });
         
+        }
 
     }
     update(username,email, image){
@@ -111,7 +130,7 @@ class EditProfile extends React.Component{
                         <br/>
                         <label>Email</label><br/>
                         <input type='email' value={email} onChange = {(event) => this.handleOnInputChange(event,'email')} /><br/>
-                        <button className='btn waves-effect waves-light' type='submit'>
+                        <button className='blue btn waves-effect waves-light' type='submit'>
                         {this.state.saving ?  'Saving...'
                         :'Save'
                         }

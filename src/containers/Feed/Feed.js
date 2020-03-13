@@ -17,7 +17,9 @@ class Feed extends Component{
         loadPosts(token);
 
     }
-
+    loadPaginationPosts = () => {
+        
+    }
     render(){
         let posts = <Spinner/>;
         const {loading} = this.props;
@@ -25,20 +27,20 @@ class Feed extends Component{
             console.log(this.props.posts,'[Feed.js 24]');
             posts = this.props.posts.map((post) => {
                 return <FeedPost
-                key = {post.id}
-                id = {post.id}
-                url ={post.url}
-                user_id= {post.user_id}
-                token = {this.props.token}
-                authorProfileImage= {post.userProfileImage}
-                authorProfileUrl = {post.userProfileUrl}
-                username = {post.userName}
-                image = {post.image}
-                caption = {post.caption}
-                likes = {post.likes}
-                liked = {post.liked}
-                commentsUrl = {post.comments}
-                />
+                    key = {post.id}
+                    id = {post.id}
+                    url ={post.url}
+                    user_id= {post.user_id}
+                    token = {this.props.token}
+                    authorProfileImage= {post.userProfileImage}
+                    authorProfileUrl = {post.userProfileUrl}
+                    username = {post.userName}
+                    image = {post.image}
+                    caption = {post.caption}
+                    likes = {post.likes}
+                    liked = {post.liked}
+                    commentsUrl = {post.comments}
+                    />
             });
             console.log(this.props);
             console.log(this.props.posts);

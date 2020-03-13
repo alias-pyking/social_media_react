@@ -2,7 +2,7 @@ import React from 'react';
 import axios,{post} from 'axios';
 import { connect } from 'react-redux';
 import {Redirect} from 'react-router-dom'
-
+import './AddPost.css';
 class AddPost extends React.Component{
     state = {
         image:null,
@@ -62,13 +62,19 @@ class AddPost extends React.Component{
                 <h3>Add new post</h3>
                 <form onSubmit = {this.handleSubmit}>
                     <label>Image</label>
-                    <input required type='file' onChange = {(event) => this.handleOnChange(event,'file')} />
+                    <input required type='file' onChange = {(event) => this.handleOnChange(event,'file')} /> <br/>
                     <label>Caption</label>
-                    <textarea maxLength = {250} value = {this.state.caption} 
+                    <textarea 
+                    className='captionText'
+                    maxLength = {250} value = {this.state.caption} 
                     onChange = { (event) => this.handleOnChange(event,'caption')}/>
                     {this.state.error ? <p> {this.state.error} </p>:''}
-                    <button type='submit'>{this.state.submitting?'Adding...':'Add'}</button>
+                    <button class="blue btn waves-effect waves-light" type="submit" name="action">
 
+                    {this.state.submitting?'Submiting...':'Submit'}
+
+                        <i class="material-icons right">send</i>
+                    </button>
                 </form>
             </div>
         );
