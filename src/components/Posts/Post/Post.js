@@ -7,20 +7,21 @@ const post = props =>{
         backgroundRepeat:'no-repeat',
     }
     return (
-        <div className='col s12 m6 l4'>
+        <div className='col s12 m6 l4 post'>
 
         <Link to={'/p/'+props.id}>
-            {/* <div 
-            className='postImage'
-            style = {styles}
-            >
-            </div> */}
+            
             <div className = 'img__wrap'>
             <div className='img__description'>
                 <i className='material-icons'>thumb_up</i> <span> {props.likes}</span>
                 <i className = 'material-icons'>add_comment</i> <span>{props.comments}</span>
             </div>
-            <img src = {props.image} className='responsive-img'/>
+            <div 
+                className='postImage'
+                style = {styles}
+            >
+            </div>
+            {/* <img src = {props.image} className='responsive-img' height='100'/> */}
             </div>
         </Link>
         </div>

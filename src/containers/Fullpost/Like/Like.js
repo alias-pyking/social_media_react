@@ -1,6 +1,7 @@
 import React from 'react';
 import './Like.css';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 export default class Like extends React.Component{
     state = {
         liked: this.props.liked,
@@ -37,11 +38,7 @@ export default class Like extends React.Component{
     }
 
     render(){
-        let likeButtonClasses = ['postlikeButton'];
         const {liked, likes} = this.state;
-        if(liked) {
-            likeButtonClasses.push('Liked');
-        }
         let likeKeyword = 'likes';
         if(likes === 1) {
             likeKeyword = 'like';
@@ -50,7 +47,11 @@ export default class Like extends React.Component{
         return (
             <div>
             <div className='buttons'>
-                <button className={likeButtonClasses.join(' ')} onClick = {this.handleLikeclick}>Like</button>
+                <Link className='postlikeButton' onClick = {this.handleLikeclick}>
+                    <i className='material-icons'>
+                    {liked ?'thumb_down':'thumb_up_alt'}    
+                    </i>
+                </Link>
             </div>
             <div className='likesSection'>
                 <p>{this.state.likes} {likeKeyword} {this.state.liked ? <b> You liked </b>:''} </p>

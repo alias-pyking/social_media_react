@@ -3,18 +3,11 @@
     height:100px;
 } */
 .postImage {
-    border:1px solid #333;
-    width:300px;
-    height: 300px;
-    transition: 0.3s;
-    transform: scale(1);
-    margin:10px;
-    justify-self: flex-start;
-}
-.postImage:hover{
-    transition: 0.3s;
-    transform: scale(1.1);
-}
+    width:400px;
+    height: 400px;
+    float: left;
+    background-size: cover;
+}   
 .img__wrap {
     position: relative;
 }
@@ -24,9 +17,10 @@
     top: 0;
     bottom: 0;
     left: 0;
-    right: 0;
+    right: 8px;
     padding-top: 55%;
-    padding-bottom: 45%;
+    padding-bottom: 43%;
+    padding-right: 10px;
     background: rgba(82, 78, 78, 0.72);
     color: #fff;
     visibility: hidden;

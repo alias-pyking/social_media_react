@@ -5,7 +5,8 @@ const bottomBar = (props) => {
     return (
         <div className='navbar-fixed'>
         <nav>
-            <div className="nav-wrapper blue">
+            <div className='nav-wrapper blue'>
+            <div className="nav-wrapper blue container">
             <ul className=''>
                 <NavBarItem path='/' name='home'/>
                 <div className='right'>
@@ -16,6 +17,7 @@ const bottomBar = (props) => {
                     <NavBarItem path = '/' name='search' /> 
                 </div>
             </ul>
+            </div>
             </div>
         </nav> 
         </div>

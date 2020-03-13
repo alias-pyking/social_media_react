@@ -30,11 +30,11 @@ class MyProfile extends Component{
             profilePosts = <Posts posts = {posts}/>
         }
         return (
+            <div className='col s12'>
             <div className='account'>
                     {displayProfile}
-                <div className='col s12'>
                     {profilePosts}
-                </div>
+            </div>
             </div>
         );
     }

@@ -53,7 +53,7 @@ class Profile extends React.Component{
                         :
                         <button
                         onClick={this.handleFollowClick}
-                        className = 'followButton'
+                        className = 'btn waves-effect waves-light blue'
                         >
                             {follows?'Unfollow':'Follow' }
                         </button> 

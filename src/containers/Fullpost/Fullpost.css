@@ -1,24 +1,12 @@
-.fullPost{
-    display:flex;
-    flex-direction: row;
-    /* padding:16px;
-    width:inherit;
-    margin-top:16px;
-    margin-bottom: 100px; */
-}
+
 .commentHead{
-    top: 0;
-}
-.commentSection{
-    float: right;
-}
-.post{
-    height: 80vh;
-    width:80vh;
+    margin-top: 10px;
+    width: inherit;
 }
 .commentsList{
+    margin-top: 20px;
     width: inherit;
-    height: 600px;
+    height: 500px;
     scroll-behavior: smooth;
     overflow-y:auto;   
 }
@@ -28,7 +16,7 @@
 }
 .addCommentTextArea{
     padding:16px;
-    width: 350px;
+    width: 300px;
     height:60px;
     border-top: none;
     border-left:none;
@@ -98,5 +86,14 @@ and (max-device-width : 1024px)  {
         display:flex;
         flex-direction: row;
         width: 100%;
+    }
+    .commentsList{
+        height: 300px;
+    }
+}
+@media only screen
+and (max-device-width:1400) {
+    .commentsList{
+        height: 300px;
     }
 }

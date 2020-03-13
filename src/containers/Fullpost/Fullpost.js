@@ -101,11 +101,22 @@ class FullPost extends React.Component{
         let displayComments = <Spinner/>
         const {token} = this.props;
         const {postLoading,commentLoading, error} = this.state;
+        let header = <p>.</p>;
+        let like = <></>;
         if(!postLoading) {
             const {post}  = this.state;
+            header = <Header user_id = {post.user_id} authorImg = {post.userProfileImage} username = {post.userName} />;
+            like = (<div className='card-action'>
+                            <Like
+                                token = {token}
+                                url = {post.url}
+                                id = {post.id}
+                                likes = {post.likes}
+                                liked = {post.liked}/>
+                        </div>);
             displayPost = (
+                <div className='col s12 m6 l6'>
                 <div className='card'>
-                    <Header user_id = {post.user_id} authorImg = {post.userProfileImage} username = {post.userName} />
                     <div className='lowerSection'>
                         <div className='card-image'>
                             <img src={post.image} className='responsive-img' alt={post.caption}/>
@@ -114,15 +125,8 @@ class FullPost extends React.Component{
                         <div className='footer card-content'>
                             <p> <b>{post.userName}</b>  {post.caption}</p>
                         </div>
-                        <div className='card-action'>
-                            <Like
-                                token = {token}
-                                url = {post.url}
-                                id = {post.id}
-                                likes = {post.likes}
-                                liked = {post.liked}/>
-                        </div>
                     </div>
+                </div>
                 </div>
             );
         }
@@ -140,39 +144,41 @@ class FullPost extends React.Component{
             });
         }
         return(
-            <div className='fullPost row'>
-                <div className='col s12'>
-                {displayPost}
-                </div>
-                <div className='commentSection col'> 
-                    <h3 className='commentHead'>Comments</h3>
-                    <div className='commentsList'>
-                        {displayComments}   
-                    </div>
-                    <div className='addComment'>
-                        <form>
-                            <textarea 
-                            onChange={this.onTextAreaChange}
-                            className='addCommentTextArea'
-                            placeholder='Add a comment'
-                            value={this.state.addCommentText}
-                            />
-                            
-                            {error ? <p className='errorText'>{error}</p>:''}
+            <div className='row'>
 
-                            <button
-                            onClick={this.submitCommentForm}
-                            className='blue btn waves-effect waves-light' 
-                            type='submit'
-                            >
-                            {this.state.postingComment? 'posting...':'Post'}
-                            <i className='material-icons right'>send</i>
-                            </button>
-                        </form>
-                    </div>
+                        {displayPost}
                     
-                </div> 
-            </div>
+                    <div className='col s12 m6 l6 commentSection'> 
+                        <div className='commentHead'>
+                            {header}
+                        </div>
+                        <div className='commentsList'>
+                            {displayComments}   
+                        </div>
+                        {like}
+                        <div className='addComment'>
+                            <form>
+                                <textarea 
+                                onChange={this.onTextAreaChange}
+                                className='addCommentTextArea'
+                                placeholder='Add a comment'
+                                value={this.state.addCommentText}
+                                />
+                                
+                                {error ? <p className='errorText'>{error}</p>:''}
+
+                                <button
+                                onClick={this.submitCommentForm}
+                                className='blue btn waves-effect waves-light' 
+                                type='submit'
+                                >
+                                {this.state.postingComment? 'posting...':'Post'}
+                                <i className='material-icons right'>send</i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
         );
     }
 }
