@@ -1,17 +1,16 @@
 import React from 'react';
 import './Layout.css';
 import {connect} from 'react-redux';
-import BottomBar from '../Navigation/Bottombar/Bottombar';
+import NavBar from '../Navigation/NavBar/NavBar';
 import { Link } from 'react-router-dom';
-import M from 'materialize-css';
 const layout = (props) => {
     return (
         <React.Fragment>
             
             <div className='container'>
-                <Link to='/acc'>Follow New Users</Link>
+                <NavBar/>
                 {props.children}
-                <BottomBar />
+                
             </div>
         </React.Fragment>  
     );

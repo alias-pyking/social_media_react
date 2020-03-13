@@ -45,7 +45,6 @@ class Feed extends Component{
         }
         return (
             <div className='row'>
-                <Link to='/new'>Add new </Link>
                 <div className='col s12 m7'>
                     {posts}
                 </div>

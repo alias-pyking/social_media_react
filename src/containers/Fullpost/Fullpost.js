@@ -108,7 +108,7 @@ class FullPost extends React.Component{
                     <Header user_id = {post.user_id} authorImg = {post.userProfileImage} username = {post.userName} />
                     <div className='lowerSection'>
                         <div className='card-image'>
-                            <img src={post.image} className='postImg' alt={post.caption}/>
+                            <img src={post.image} className='responsive-img' alt={post.caption}/>
                         </div>
                         
                         <div className='footer card-content'>

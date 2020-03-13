@@ -6,11 +6,11 @@ import {Link} from 'react-router-dom';
 const feedpost = (props) => {
     return (
         
-        <div className="card">
+        <div className="card hoverable">
             <Header user_id = {props.user_id} authorImg = {props.authorProfileImage} username = {props.username}/>
             <div className='lowerSection'>
                 <div className='card-image'>
-                    <img src={props.image} alt={props.caption}/>
+                    <img src={props.image} className='responsive-img' alt={props.caption}/>
                 </div>
                 <div className='card-content'>
                 <p><b>{props.username}</b>  {props.caption}</p>

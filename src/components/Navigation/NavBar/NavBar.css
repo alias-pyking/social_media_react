@@ -1,30 +1,17 @@
-.bottomBar{
-    width:inherit;
-    position:fixed;
-    bottom:0;
-    background: #fff;
-    border:1px solid #333;
-    z-index:1000;
-    margin-top: 100px;
-}
-.bottomBarItems{
-    display:flex;
-    flex-direction: row;
-    justify-content: space-around;
 
-}
-.bottomBarItems li{
+.navbar ul{
     list-style: none;
+    display:flex;
 }
-.active {
-
+.navitems{
+    display:flex;
+    justify-content: end;;
 }
-
 @media (max-width:600px){
     .bottomBar{
         margin:0;
         width:100%;
-        border:none
+        border:nonea
     }
     .bottomBarItems{
         justify-content: stretch;   

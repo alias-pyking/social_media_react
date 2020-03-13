@@ -38,12 +38,7 @@ export default class LikeComponent extends React.Component{
     }
 
     render(){
-        let likeButtonClasses = ['postlikeButton'];
         const {liked, likes} = this.state;
-        console.log(liked);
-        if(liked) {
-            likeButtonClasses.push('Liked');
-        }
         let likeKeyword = 'likes';
         if(likes === 1) {
             likeKeyword = 'like';
@@ -52,8 +47,12 @@ export default class LikeComponent extends React.Component{
         return (
             <div>
             <div className='buttons'>
-                <button className={likeButtonClasses.join(' ')} onClick = {this.handleLikeclick}>Like</button>
-                {this.props.feedpost ? <Link to={'/p/'+this.props.id} className='postlikeButton'>Comment</Link>:''}
+                <Link className='postlikeButton' onClick = {this.handleLikeclick}>
+                    <i className='material-icons'>
+                    {liked ?'thumb_down':'thumb_up_alt'}    
+                    </i></Link>
+
+                {this.props.feedpost ? <Link to={'/p/'+this.props.id} className='postlikeButton'><i className='material-icons'>add_comment</i></Link>:''}
             </div>
             <div className='likesSection'>
                 <p>{this.state.likes} {likeKeyword} {this.state.liked ? <b> You liked </b>:''} </p>

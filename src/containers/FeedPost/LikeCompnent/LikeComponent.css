@@ -25,3 +25,11 @@
     padding: 10px;
     margin-bottom: 0;
 }
+
+.likeButton{
+    position: relative;
+    float: left;
+    background:transparent;
+    display:block;
+    padding:10px;
+}

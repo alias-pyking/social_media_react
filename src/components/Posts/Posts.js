@@ -12,7 +12,7 @@ const posts = props => {
         />
     });
     return (
-        <div className='posts'>
+        <div className='posts row'>
             {displayPosts}
         </div>
     );
