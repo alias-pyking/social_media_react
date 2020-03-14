@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import * as actionCreators from '../../store/actions/index';
 import Posts from '../../components/Posts/Posts';
+import Spinner from '../../components/UI/Spinner/Spinner';
 class Explore extends React.Component {
     componentDidMount(){
         const{token,loadPosts} = this.props;
@@ -9,7 +10,7 @@ class Explore extends React.Component {
     }
     render(){
         const { loading } = this.props;
-        let displayPosts = <p>Loading...</p>
+        let displayPosts = <Spinner/>
         if(!loading) {
             const {posts} = this.props;
             displayPosts = <Posts posts = {posts}/>

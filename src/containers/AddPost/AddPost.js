@@ -2,6 +2,7 @@ import React from 'react';
 import {post} from 'axios';
 import { connect } from 'react-redux';
 import './AddPost.css';
+import Spinner from '../../components/UI/Spinner/Spinner';
 class AddPost extends React.Component{
     state = {
         image:null,
@@ -29,17 +30,24 @@ class AddPost extends React.Component{
         } else if(!caption) {
             this.setState({error:'caption is required'});
         } else {
-            this.setState({submitting:true});
-            this.add(caption, image)
-            .then(response => {
-                console.log(response.data);
-                this.setState({submitting:false});
-                const {id} = response.data;
-                this.props.history.push('/p/'+id);
-            })
-            .catch(error => {
-                console.log(error);
-            });
+            const fileType = image.type;
+            const allowedTypes = ['image/jpeg','image/gif','image/png','image/jpg','image/x-png'];
+            if(allowedTypes.includes(fileType)) {
+                this.setState({submitting:true});
+                this.add(caption, image)
+                .then(response => {
+                    console.log(response.data);
+                    this.setState({submitting:false});
+                    const {id} = response.data;
+                    this.props.history.push('/p/'+id);
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+            } else{
+                this.setState({error:"File type not allowed"})
+            }
+            
         }
     }
     add(caption, image){
@@ -57,13 +65,19 @@ class AddPost extends React.Component{
       }
         
     render() {
-
+        const {submitting} = this.state;
+        let loadingBar = null;
+        if(submitting) {
+            loadingBar = <Spinner/>
+        }
         return(
             <div>
                 <h3>Add new post</h3>
                 <form onSubmit = {this.handleSubmit}>
                     <label>Image</label>
-                    <input required type='file' onChange = {(event) => this.handleOnChange(event,'file')} /> <br/>
+                    <input required 
+                    type='file' 
+                    onChange = {(event) => this.handleOnChange(event,'file')} /> <br/>
                     <label>Caption</label>
                     <textarea 
                     className='captionText'

@@ -2,6 +2,7 @@ import React from 'react';
 import './EditProfile.css';
 import {connect } from 'react-redux';
 import axios,{put} from 'axios';
+import Spinner from '../../components/UI/Spinner/Spinner';
 class EditProfile extends React.Component{
     state = {
         username:"",
@@ -113,7 +114,7 @@ class EditProfile extends React.Component{
         
     }
     render(){
-        let form = <p>Loading...</p>;
+        let form = <Spinner/>;
         const {loading} = this.state;
         if(!loading) {
             const {username,image,email} = this.state;

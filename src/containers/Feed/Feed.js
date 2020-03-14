@@ -5,7 +5,8 @@ import * as actionCreators from '../../store/actions/index';
 import {connect} from 'react-redux';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../hoc/withErrorHandler/withErrorHandler';
- import axios from '../../axios-insta';
+import axios from '../../axios-insta';
+
 class Feed extends Component{
     componentDidMount(){
         const {isAuth}  = this.props;

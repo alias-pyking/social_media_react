@@ -3,6 +3,8 @@ import axios from '../../axios-insta';
 import {connect} from 'react-redux';
 import Profile from '../MyProfile/Profile/Profile';
 import Posts from '../../components/Posts/Posts';
+import Spinner from '../../components/UI/Spinner/Spinner';
+
 class Account extends React.Component {
     state = {
         posts:[],
@@ -40,8 +42,8 @@ class Account extends React.Component {
     }
     render(){
         const {profileLoading,postsLoading} = this.state;
-        let displayProfile = <p>Loading</p>;
-        let profilePosts = <p>posts Loading</p>;
+        let displayProfile = <Spinner/>;
+        let profilePosts = <Spinner/>;
         if(!profileLoading) {
             const {profile} = this.state;
             displayProfile = <Profile

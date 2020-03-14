@@ -4,6 +4,7 @@ import {loadProfilePosts,loadProfile} from '../../store/actions/index';
 import Profile from './Profile/Profile';
 import Posts from '../../components/Posts/Posts';
 import './MyProfile.css';
+import Spinner from '../../components/UI/Spinner/Spinner';
 class MyProfile extends Component{
     componentDidMount(){ 
         const {userId, token, onLoadProfile, onLoadProfilePosts}  = this.props;
@@ -12,8 +13,8 @@ class MyProfile extends Component{
     }
     render () {
         const {profileLoading,profilePostsLoading} = this.props;
-        let displayProfile = <p>Loading</p>;
-        let profilePosts = <p>posts Loading</p>;
+        let displayProfile = <Spinner/>;
+        let profilePosts = <Spinner/>;
         if(!profileLoading) {
             const {profile} = this.props;
             displayProfile = <Profile

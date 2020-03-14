@@ -3,6 +3,7 @@ import './Following.css';
 import axios from '../../axios-insta';
 import {connect} from 'react-redux';
 import User from '../User/User';
+import Spinner from '../../components/UI/Spinner/Spinner';
 class Following extends React.Component {
     state ={
         users:[],
@@ -28,7 +29,7 @@ class Following extends React.Component {
         })
     }
     render(){
-        let users = <p>loading..</p>;
+        let users = <Spinner/>;
         const {loading} = this.state
         console.log(this.state.users);
         if(!loading){
