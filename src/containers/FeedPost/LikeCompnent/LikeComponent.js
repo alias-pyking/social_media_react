@@ -2,10 +2,12 @@ import React from 'react';
 import './LikeComponent.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-export default class LikeComponent extends React.Component{
+import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
+class LikeComponent extends React.Component{
     state = {
         liked: this.props.liked,
         likes: this.props.likes,
+        error:null
     }
     handleLikeclick = (event) =>{
         event.preventDefault();
@@ -16,7 +18,6 @@ export default class LikeComponent extends React.Component{
         };
         axios.post(likePostUrl,null,header)
         .then((response) => {
-            console.log(response.data);
             const {liked} = this.state;
             if(liked) {
                 // dislike the post
@@ -33,8 +34,8 @@ export default class LikeComponent extends React.Component{
             }
         })
         .catch(err => {
-            console.log(err);
-        })
+            this.setState({error:err});
+        });
     }
 
     render(){
@@ -61,3 +62,5 @@ export default class LikeComponent extends React.Component{
         )
     }
 }
+
+export default withErrorHandler(LikeComponent,axios);

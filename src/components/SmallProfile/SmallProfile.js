@@ -2,7 +2,6 @@ import React from 'react';
 import './SmallProfile.css';
 import { Link } from 'react-router-dom';
 const profile= props =>{
-    console.log(props.user_id,'[SmallProfile.js 5]');
     return (
         <div className='smallProfile'>
             

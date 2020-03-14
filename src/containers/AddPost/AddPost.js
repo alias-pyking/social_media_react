@@ -2,7 +2,6 @@ import React from 'react';
 import {post} from 'axios';
 import { connect } from 'react-redux';
 import './AddPost.css';
-import Spinner from '../../components/UI/Spinner/Spinner';
 class AddPost extends React.Component{
     state = {
         image:null,
@@ -65,11 +64,6 @@ class AddPost extends React.Component{
       }
         
     render() {
-        const {submitting} = this.state;
-        let loadingBar = null;
-        if(submitting) {
-            loadingBar = <Spinner/>
-        }
         return(
             <div>
                 <h3>Add new post</h3>

@@ -1,5 +1,6 @@
 import React from 'react';
 import NavBarItem from './NavBarItem/NavBarItem';
+import SearchBar from '../../../containers/Search/Search';
 const NavBar = (props) => {
     return (
         <div className='navbar-fixed'>
@@ -13,7 +14,7 @@ const NavBar = (props) => {
                     <NavBarItem path='/explore' name='explore'/>
                     <NavBarItem path = '/profile' name='account_circle' />
                     <NavBarItem path='/acc' name='person_add' />
-                    <NavBarItem path = '/' name='search' /> 
+                    <NavBarItem path='/search' name='search'/>
                 </div>
             </ul>
             </div>

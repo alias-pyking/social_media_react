@@ -14,11 +14,12 @@ import Followers from './containers/Followers/Followers';
 import EditProfile from './containers/EditProfile/EditProfile';
 import Logout from './containers/Auth/Logout/Logout';
 
-import * as action from './store/actions/index';
-import {connect} from 'react-redux';
 import AddPost from './containers/AddPost/AddPost';
 import FollowNew from './containers/FollowNew/FollowNew';
 import Explore from './containers/Explore/Explore';
+import Search from './containers/Search/Search';
+import {connect} from 'react-redux';
+import * as action from './store/actions/index';
 class  App extends React.Component {
   componentDidMount(){
     this.props.tryAutoSignIn();
@@ -38,6 +39,7 @@ class  App extends React.Component {
           <Route path="/explore" exact component = {Explore} />
           <Route path="/auth" exact component = {Auth} />
           <Route path = "/logout" component = {Logout} />
+          <Route path='/search' exact component = {Search} />
 
           <Route path= "/profile/edit" component = {EditProfile} />
           <Route path = "/profile" exact component = {MyProfile} />
@@ -51,6 +53,7 @@ class  App extends React.Component {
           <Route path='/acc/:id/followers' component = {Followers}/>
           <Route path ='/acc/:id/following' component ={Following} />
           <Route path='/acc/:id' component = {Account}/>
+          
 
         </Switch>
       );

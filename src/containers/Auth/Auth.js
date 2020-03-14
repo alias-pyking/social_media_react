@@ -25,7 +25,6 @@ class Auth extends React.Component {
             isValid = value.trim() !=='' && isValid;
         }
         if(rules.minLength){
-            console.log(value.length, rules.minLength);
             isValid = value.length >= rules.minLength && isValid;
         }
         if(rules.maxLength){
@@ -60,7 +59,6 @@ class Auth extends React.Component {
             let success = false;
             axios.get(url)
             .then(response =>{
-                console.log(response.data);
                 success = response.data.success;
                 if(success){
                     this.setState({usernameError:false})
@@ -75,7 +73,6 @@ class Auth extends React.Component {
 
             })
             .catch(error => {
-                console.log(error);
             });
         } else {
             const username = this.state.controls.username.value || null;

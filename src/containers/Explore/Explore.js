@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import * as actionCreators from '../../store/actions/index';
 import Posts from '../../components/Posts/Posts';
 import Spinner from '../../components/UI/Spinner/Spinner';
+import withErrorHandler from '../hoc/withErrorHandler/withErrorHandler';
+import axios from '../../axios-insta';
 class Explore extends React.Component {
     componentDidMount(){
         const{token,loadPosts} = this.props;
@@ -34,4 +36,4 @@ const mapDispatchToProps = dispatch => {
         loadPosts:(token) => dispatch(actionCreators.loadExplorePosts(token)),
     }
 }
-export default connect(mapStateToProps,mapDispatchToProps)(Explore);
+export default connect(mapStateToProps,mapDispatchToProps)(withErrorHandler(Explore,axios));

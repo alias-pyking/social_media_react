@@ -30,7 +30,7 @@ class EditProfile extends React.Component{
             });
         })
         .catch(error => {
-            console.log(error);
+
         })
     }
     handleOnSubmit = event => {
@@ -48,37 +48,32 @@ class EditProfile extends React.Component{
         if(username == previousUserName){
             this.update(username,email,image)
                 .then(response => {
-                    console.log(response.data);
                     this.setState({saving:false});
                 })
                 .catch(error => {
-                    console.log(error);
                 });
         } else {
             axios.get(url,config)
             .then(response =>{
-            console.log(response.data);
             success = response.data.success;
             if(success){
                 this.setState({usernameError:false});
                 this.update(username,email,image)
                 .then(response => {
-                    console.log(response.data);
                     this.setState({saving:false});
                 })
                 .catch(error => {
-                    console.log(error);
                 });
             } else{
                 this.setState({usernameError:true,saving:false})
             }
 
-        })
-        .catch(error => {
-            console.log(error);
-        });
-        
+            })
+            .catch(error => {
+            });
+            
         }
+
 
     }
     update(username,email, image){
@@ -117,7 +112,7 @@ class EditProfile extends React.Component{
         let form = <Spinner/>;
         const {loading} = this.state;
         if(!loading) {
-            const {username,image,email} = this.state;
+            const {username,email} = this.state;
             form = <form onSubmit = {this.handleOnSubmit}>
 
                         <label>Change Profile Pic</label><br/>

@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../hoc/withErrorHandler/withErrorHandler';
 import axios from '../../axios-insta';
+import { Link } from 'react-router-dom';
 
 class Feed extends Component{
     componentDidMount(){
@@ -14,7 +15,6 @@ class Feed extends Component{
             this.props.history.push('/auth');
         }
         const {loadPosts,token} = this.props;
-        console.log(loadPosts);
         loadPosts(token);
 
     }
@@ -22,34 +22,36 @@ class Feed extends Component{
 
     }
     render(){
-        let posts = <Spinner/>;
+        let displayPosts = <Spinner/>;
         const {loading} = this.props;
         if(!loading) {
-            console.log(this.props.posts,'[Feed.js 24]');
-            posts = this.props.posts.map((post) => {
-                return <FeedPost
-                    key = {post.id}
-                    id = {post.id}
-                    url ={post.url}
-                    user_id= {post.user_id}
-                    token = {this.props.token}
-                    authorProfileImage= {post.userProfileImage}
-                    authorProfileUrl = {post.userProfileUrl}
-                    username = {post.userName}
-                    image = {post.image}
-                    caption = {post.caption}
-                    likes = {post.likes}
-                    liked = {post.liked}
-                    commentsUrl = {post.comments}
-                    />
-            });
-            console.log(this.props);
-            console.log(this.props.posts);
+            const {posts} = this.props;
+            if(posts.length === 0) {
+                displayPosts = <h4>No Posts Found in Your feed. Follow more users <Link to='/acc'>here</Link></h4>
+            } else  {
+                displayPosts = posts.map((post) => {
+                    return <FeedPost
+                        key = {post.id}
+                        id = {post.id}
+                        url ={post.url}
+                        user_id= {post.user_id}
+                        token = {this.props.token}
+                        authorProfileImage= {post.userProfileImage}
+                        authorProfileUrl = {post.userProfileUrl}
+                        username = {post.userName}
+                        image = {post.image}
+                        caption = {post.caption}
+                        likes = {post.likes}
+                        liked = {post.liked}
+                        commentsUrl = {post.comments}
+                        />
+                });
+            }
         }
         return (
             <div className='row'>
                 <div className='col s12 m7'>
-                    {posts}
+                    {displayPosts}
                 </div>
             </div>
         )

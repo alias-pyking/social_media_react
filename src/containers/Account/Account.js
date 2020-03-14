@@ -47,19 +47,18 @@ class Account extends React.Component {
         if(!profileLoading) {
             const {profile} = this.state;
             displayProfile = <Profile
-                        username = {profile.userName}
-                        user_id = {profile.user_id}
-                        profileImg = {profile.image}
-                        followers = {profile.followers}
-                        following = {profile.following}
-                        follows = {profile.follows}
-                        />
+                                username = {profile.userName}
+                                user_id = {profile.user_id}
+                                profileImg = {profile.image}
+                                followers = {profile.followers}
+                                following = {profile.following}
+                                follows = {profile.follows}
+                                />
         }
         if(!postsLoading) {
             const {posts} = this.state;
             profilePosts = <Posts posts = {posts}/>
         }
-        const {id} = this.props.match.params;
         return(
             <div className='col s12'>
                 <div className='account'>
