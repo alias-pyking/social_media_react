@@ -12,6 +12,8 @@ import Account from './containers/Account/Account';
 import Following from './containers/Following/Following';
 import Followers from './containers/Followers/Followers';
 import EditProfile from './containers/EditProfile/EditProfile';
+import Logout from './containers/Auth/Logout/Logout';
+
 import * as action from './store/actions/index';
 import {connect} from 'react-redux';
 import AddPost from './containers/AddPost/AddPost';
@@ -35,6 +37,8 @@ class  App extends React.Component {
           <Route path="/new" exact component = {AddPost}/>
           <Route path="/explore" exact component = {Explore} />
           <Route path="/auth" exact component = {Auth} />
+          <Route path = "/logout" component = {Logout} />
+
           <Route path= "/profile/edit" component = {EditProfile} />
           <Route path = "/profile" exact component = {MyProfile} />
           

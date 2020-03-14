@@ -48,8 +48,10 @@ class Profile extends React.Component{
                         </div>
                         
                         {show? 
-                        
-                    <Link to='/profile/edit' className='edit waves-effect waves-light'>Edit</Link>
+                       <> 
+                    <Link to='/profile/edit' className='edit waves-effect waves-light'>Edit_Profile</Link>
+                    <button to='/logout' className ="btn btn-danger red waves-effect waves-light">Logout</button>
+                    </>
                         :
                         <button
                         onClick={this.handleFollowClick}

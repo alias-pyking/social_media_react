@@ -16,6 +16,7 @@ class Auth extends React.Component {
             controls :{...controls.signUpcontrols},
             isSignUp:true,
             usernameError:false,
+            error:null
         }
     }
     checkValidity(value, rules){
@@ -66,7 +67,7 @@ class Auth extends React.Component {
                     if(username && email && password && password2) {
                         this.props.onAuth(username, email, password, this.state.isSignUp);
                     } else {
-                        console.log('Empty details')
+                        this.setState({error:'Every field is required!...'});
                     }
                 } else{
                     this.setState({usernameError:true})
@@ -85,11 +86,11 @@ class Auth extends React.Component {
                     this.props.onAuth(username, null, password, this.state.isSignUp);
                 }
                 else {
-                    console.log('Empyt details');
+                    this.setState({error:'Every field is required!...'});
                 } 
             }
             else {
-                console.log('Please fill correct info');
+                this.setState({error:'Incorrect Info'});
             }
         }
         
@@ -167,6 +168,7 @@ class Auth extends React.Component {
                 <form onSubmit={this.submitHandler}>
                     {form}
                     {this.state.usernameError? <p>This username already exists..</p>:''}
+                    {this.state.error ? <p>{this.state.error}</p>:''}
                     <Button clicked ={this.submitHandler}  btnType="Success">SIGN {this.state.isSignUp?'UP':'IN'} </Button>
                 </form>
                 <Button

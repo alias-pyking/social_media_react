@@ -1,6 +1,6 @@
 .comment{
     padding: 16px;
-    width: inherit;
+    width: 300px;
 }
 @media (max-width:600px){
     .comment{

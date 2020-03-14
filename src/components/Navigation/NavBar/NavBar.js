@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBarItem from './NavBarItem/NavBarItem';
-const bottomBar = (props) => {
+const NavBar = (props) => {
     return (
         <div className='navbar-fixed'>
         <nav>
@@ -22,6 +22,6 @@ const bottomBar = (props) => {
         </div>
        
     );
-}
+};
 
-export default bottomBar;
+export default NavBar;
