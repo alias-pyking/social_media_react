@@ -51,7 +51,7 @@ class AddPost extends React.Component{
     }
     add(caption, image){
         const{token} = this.props;
-        const profileEditUrl = `http://127.0.0.1:8000/api/add_post/`;
+        const profileEditUrl = `http://instaclone.pythonanywhere.com/api/add_post/`;
         const formData = new FormData();
         formData.append('caption',caption);
         formData.append('image',image);

@@ -11,7 +11,19 @@ class Search extends React.Component{
         error:null,
     }
     componentDidMount(){
-        
+        const url = 'auth/accounts/search/?q=';
+        const {token} = this.props;
+        const headers = {
+            headers:{Authorization:`token ${token}`}
+        };
+        this.setState({loading:true});
+        axios.get(url,headers)
+        .then(response =>{
+            this.setState({loading:false,users:response.data });
+        })
+        .catch(error => {
+            this.setState({error:error,loading:false});
+        });
     }
     handleOnChange = (event) => {
         const text = event.target.value;
