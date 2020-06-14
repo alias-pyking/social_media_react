@@ -18,7 +18,7 @@ class EditProfile extends React.Component{
         const config = {
             headers:{Authorization:`token ${token}`}
         }
-        const profileUrl = 'http://instaclone.pythonanywhere.com/api/profile';
+        const profileUrl = 'https://instaclone.pythonanywhere.com/api/profile';
         axios.get(profileUrl,config)
         .then(response => {
             const profile = response.data;
@@ -36,7 +36,7 @@ class EditProfile extends React.Component{
     handleOnSubmit = event => {
         event.preventDefault();
         const {username,previousUserName, email,image} = this.state;
-        const url = 'http://instaclone.pythonanywhere.com/api/check_username/'+username;
+        const url = 'https://instaclone.pythonanywhere.com/api/check_username/'+username;
         let success = false;
         this.setState({saving:true});
         const {token} = this.props;
@@ -78,7 +78,7 @@ class EditProfile extends React.Component{
     }
     update(username,email, image){
         const{token, userId} = this.props;
-        const profileEditUrl = `http://instaclone.pythonanywhere.com/api/auth/accounts/${userId}/edit/`;
+        const profileEditUrl = `https://instaclone.pythonanywhere.com/api/auth/accounts/${userId}/edit/`;
         const formData = new FormData();
         formData.append('username',username);
         formData.append('email',email);

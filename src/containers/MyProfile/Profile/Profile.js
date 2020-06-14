@@ -10,7 +10,7 @@ class Profile extends React.Component{
     handleFollowClick = () => {
         const {follows} = this.state;
         const {user_id, token} = this.props;
-        const url = 'http://instaclone.pythonanywhere.com/api';
+        const url = 'https://instaclone.pythonanywhere.com/api';
         const accountUrl = `${url}/auth/accounts/${user_id}`;
         let followUrl;
         if(follows) {
