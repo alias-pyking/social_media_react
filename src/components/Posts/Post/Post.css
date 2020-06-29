@@ -3,26 +3,19 @@
     height:100px;
 } */
 .postImage {
-    width:400px;
-    height: 400px;
+    width:40vh;
+    height: 40vh;
     float: left;
     background-size: cover;
 }   
 .img__wrap {
-    position: absolute;
+    position: relative;;
 }
-  
 .img__description {
     position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 8px;
     padding-top: 55%;
     padding-bottom: 43%;
-    padding-right: 10px;
-    background: rgba(82, 78, 78, 0.72);
-    color: #fff;
+    color: white;
     visibility: hidden;
     opacity: 0;
     display: flex;
