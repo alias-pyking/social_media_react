@@ -8,6 +8,12 @@ import withErrorHandler from '../hoc/withErrorHandler/withErrorHandler';
 import axios from '../../axios-insta';
 import { Link } from 'react-router-dom';
 
+function getPageNumber(url){
+    const idx = url.lastIndexOf('page=');
+    const pageNumber = Number(url.substr(idx + 5,url.length));
+    return pageNumber;
+    
+}
 class Feed extends Component{
     componentDidMount(){
         const {isAuth}  = this.props;
@@ -15,17 +21,24 @@ class Feed extends Component{
             this.props.history.push('/auth');
         }
         const {loadPosts,token} = this.props;
-        loadPosts(token);
+        loadPosts(token,1);
 
     }
-    loadPaginationPosts = () => {
-
+    loadPaginationPosts = (pageNumber) => {
+        const{loadPosts, token} = this.props;
+        if(!pageNumber){
+            pageNumber = 1;
+        }
+        loadPosts(token, pageNumber);
     }
     render(){
         let displayPosts = <Spinner/>;
+        let previous = null;
+        let nextPosts = null;
         const {loading} = this.props;
         if(!loading) {
-            const {posts} = this.props;
+            const {posts, prev, next} = this.props;
+
             if(posts.length === 0) {
                 displayPosts = <h4>No Posts Found in Your feed. Follow more users <Link to='/acc'>here</Link></h4>
             } else  {
@@ -46,15 +59,39 @@ class Feed extends Component{
                         commentsUrl = {post.comments}
                         />
                 });
+                if(!prev){
+                    previous = <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>;
+                } else {
+                    const previousPageNumber = getPageNumber(prev);
+                    console.log(previousPageNumber);
+                    previous = <li><div onClick = {() => this.loadPaginationPosts(previousPageNumber)}>
+                                <i class="material-icons">chevron_left</i></div></li>;
+                }
+                if(!next){
+                    nextPosts = <li class="disabled"><a href="#!"><i class="material-icons">chevron_right</i></a></li>;
+                } else {
+                    const nextPageNumber = getPageNumber(next);
+                    nextPosts = <li class="waves-effect"><div onClick = {() => this.loadPaginationPosts(nextPageNumber)}>
+                                <i class="material-icons">chevron_right</i></div></li>;
+                }
+
             }
         }
         return (
+            <div>
             <div className='row'>
                 <div className='col s12 m7'>
                     {displayPosts}
+                    <ul class="pagination">
+                        {previous}
+                        <li class="active blue"><a href="#!">{!loading? this.props.currentPage:''}</a></li>
+                        {nextPosts}
+                    </ul>
                 </div>
             </div>
-        )
+            
+            </div>
+        );
     }
 
 }
@@ -62,6 +99,9 @@ class Feed extends Component{
 const mapStateToProps = state => {
     return {
         posts:state.feed.posts,
+        next: state.feed.next,
+        prev: state.feed.prev,
+        currentPage: state.feed.page,
         isAuth: state.auth.token !== null,
         token: state.auth.token,
         loading:state.feed.loading,
@@ -69,7 +109,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
     return {
-        loadPosts:(token) => dispatch(actionCreators.loadFeed(token)),
+        loadPosts:(token,page) => dispatch(actionCreators.loadFeed(token,page)),
     }
 }
 

@@ -5,6 +5,9 @@ const  initialState = {
     profile:null,
     profileLoading:true,
     posts:[],
+    prev: null,
+    next: null,
+    page: 1,
     profilePostsLoading:true,
     error:null,
 }
@@ -21,7 +24,7 @@ const reducer = (state = initialState, action) =>{
         case actionTypes.PROFILE_POSTS_LOADING_FAIL:
             return updateObject(state, {profilePostsLoading:false,error:action.error});
         case actionTypes.PROFILE_POSTS_LOADING_SUCCESS:
-            return updateObject(state, {profilePostsLoading:false, posts:action.posts});
+            return updateObject(state, {profilePostsLoading:false, posts:action.posts, prev:action.prev, next: action.next, page:action.page});
         default:
             return state;
     }

@@ -6,10 +6,13 @@ const feedLoadingStart = () => {
     }
 };
 
-const feedLoadingSuccess = (posts) =>{
+const feedLoadingSuccess = (posts,prev,page, next) =>{
     return {
         type: actionTypes.FEED_LOADING_SUCCESS,
-        posts:posts
+        posts:posts,
+        prev: prev,
+        page: page,
+        next: next
     }
 };
 
@@ -20,18 +23,17 @@ const feedLoadingFailed = (error) =>{
     }
 }
 
-export const loadFeed = (token) => {
+export const loadFeed = (token, page) => {
     return dispatch => {
         dispatch(feedLoadingStart());
-        const url = 'home/';
+        const url = `home/?page=${page}`;
         const header = {
             headers:{'Authorization': `token ${token}`},
         };
         axios.get(url, header)
         .then((response) => {
-            console.log('ok im here');
-            console.log(response.data);
-            dispatch(feedLoadingSuccess(response.data.results));
+            const{results, previous, next} = response.data;
+            dispatch(feedLoadingSuccess(results,previous,page, next));
         })
         .catch((error) =>{
             console.log(error);

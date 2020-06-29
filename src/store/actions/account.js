@@ -30,10 +30,13 @@ const loadingProfilePostsFail = (error) => {
         error:error
     }
 };
-const loadingProfilePostsSuccess = (posts) =>{
+const loadingProfilePostsSuccess = (posts, prev, next, page) =>{
     return {
         type: actionTypes.PROFILE_POSTS_LOADING_SUCCESS,
-        posts:posts
+        posts:posts,
+        prev: prev,
+        next: next,
+        page: page
     }
 };
 
@@ -57,7 +60,7 @@ export const loadProfile = (token) => {
         });
     }
 }
-export const loadProfilePosts = (userId, token) =>{
+export const loadProfilePosts = (userId, token, page) =>{
     return dispatch => {
         dispatch(loadingProfilePostsStart());
         const postsUrl = 'auth/accounts/'+userId+'/posts';
@@ -68,8 +71,8 @@ export const loadProfilePosts = (userId, token) =>{
         }
         axios.get(postsUrl,headers)
         .then(response =>{
-            console.log(response.data);
-            dispatch(loadingProfilePostsSuccess(response.data.results));
+            const {results, previous, next} = response.data;
+            dispatch(loadingProfilePostsSuccess(results, previous, next, page));
         })
         .catch(error =>{
             console.log(error);

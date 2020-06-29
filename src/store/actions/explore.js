@@ -14,24 +14,27 @@ const explorePostsLoadingFail= (error) => {
     }
 };
 
-const explorePostsLoadingSuccess = (posts) => {
+const explorePostsLoadingSuccess = (posts, prev,page, next) => {
     return {
         type: actionTypes.EXPLORE_POSTS_LOADING_SUCCESS,
-        posts:posts
+        posts:posts,
+        prev : prev,
+        page: page,
+        next: next
     }
 };
 
-export const loadExplorePosts = (token) => {
+export const loadExplorePosts = (token,page) => {
     return dispatch => {
         dispatch(explorePostsLoadingStart());
-        const url = 'explore/';
+        const url = `explore/?page=${page}`;
         const header = {
             headers:{'Authorization': `token ${token}`},
         };
         axios.get(url, header)
         .then((response) => {
-            console.log(response.data);
-            dispatch(explorePostsLoadingSuccess(response.data.results));
+            const {results, previous, next} = response.data;
+            dispatch(explorePostsLoadingSuccess(results, previous,page, next));
         })
         .catch((error) =>{
             console.log(error);
