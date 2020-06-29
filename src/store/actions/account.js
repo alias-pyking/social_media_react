@@ -30,13 +30,10 @@ const loadingProfilePostsFail = (error) => {
         error:error
     }
 };
-const loadingProfilePostsSuccess = (posts, prev, next, page) =>{
+const loadingProfilePostsSuccess = (posts) =>{
     return {
         type: actionTypes.PROFILE_POSTS_LOADING_SUCCESS,
         posts:posts,
-        prev: prev,
-        next: next,
-        page: page
     }
 };
 
@@ -63,7 +60,7 @@ export const loadProfile = (token) => {
 export const loadProfilePosts = (userId, token, page) =>{
     return dispatch => {
         dispatch(loadingProfilePostsStart());
-        const postsUrl = `auth/accounts/'+userId+'/posts/?page=${page}`;
+        const postsUrl = `auth/accounts/${userId}/posts/`;
         const headers = {
             headers :{
                 Authorization:`token ${token}`,
@@ -71,8 +68,8 @@ export const loadProfilePosts = (userId, token, page) =>{
         }
         axios.get(postsUrl,headers)
         .then(response =>{
-            const {results, previous, next} = response.data;
-            dispatch(loadingProfilePostsSuccess(results, previous, next, page));
+            const {results} = response.data;
+            dispatch(loadingProfilePostsSuccess(results));
         })
         .catch(error =>{
             console.log(error);
