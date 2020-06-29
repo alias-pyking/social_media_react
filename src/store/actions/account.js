@@ -63,7 +63,7 @@ export const loadProfile = (token) => {
 export const loadProfilePosts = (userId, token, page) =>{
     return dispatch => {
         dispatch(loadingProfilePostsStart());
-        const postsUrl = 'auth/accounts/'+userId+'/posts';
+        const postsUrl = `auth/accounts/'+userId+'/posts/?page=${page}`;
         const headers = {
             headers :{
                 Authorization:`token ${token}`,
