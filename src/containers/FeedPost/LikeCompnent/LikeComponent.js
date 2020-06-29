@@ -13,6 +13,7 @@ class LikeComponent extends React.Component{
         event.preventDefault();
         const {url,token} = this.props;
         const likePostUrl = url+'like/';
+        console.log(likePostUrl);
         const header = {
             headers:{'Authorization': `token ${token}`},
         };

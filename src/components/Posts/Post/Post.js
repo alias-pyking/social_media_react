@@ -21,7 +21,6 @@ const post = props =>{
                 style = {styles}
             >
             </div>
-            {/* <img src = {props.image} className='responsive-img' height='100'/> */}
             </div>
         </Link>
         </div>
